@@ -95,5 +95,13 @@ namespace QuanLyCuaHangPhuKienCauLong
             sp.ShowDialog();
             this.Show();
         }
+
+        private void thốngKêHàngTồnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmThongKeHangTon frm = new frmThongKeHangTon();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }
