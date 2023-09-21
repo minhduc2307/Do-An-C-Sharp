@@ -250,6 +250,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch (Exception ex)
             {
+                Console.Write("Loi: " + ex.Message);
             }
         }
     }

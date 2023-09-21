@@ -381,3 +381,9 @@ BEGIN
         );
     END
 END;
+
+
+select MaHD, TongTien from HoaDon WHERE NgayBan BETWEEN '2023-09-18' AND '2023-09-20'
+SELECT SUM(TongTien) AS TongDoanhThu
+FROM HoaDon
+WHERE NgayBan BETWEEN '2023-09-18' AND '2023-09-20'

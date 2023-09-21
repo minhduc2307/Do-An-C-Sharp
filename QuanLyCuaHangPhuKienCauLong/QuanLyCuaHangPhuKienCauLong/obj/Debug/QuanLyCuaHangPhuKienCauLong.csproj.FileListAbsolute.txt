@@ -39,3 +39,4 @@ D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPh
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\RdlCompile.cache
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\RdlCompile.compiled
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\bin\Debug\QuanLyCuaHangPhuKienCauLong.exe.config
+D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.frmThongKeDoanhThu.resources
