@@ -33,6 +33,20 @@ namespace QuanLyCuaHangPhuKienCauLong
             DataSet ds = new DataSet();
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[0].HeaderText = "Mã hóa đơn";
+            dataGridView1.Columns[1].HeaderText = "Ngày bán";
+            dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
+            dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+            dataGridView1.Columns[4].HeaderText = "Giá bán";
+            dataGridView1.Columns[5].HeaderText = "Số lượng";
+            dataGridView1.Columns[6].HeaderText = "Giảm giá";
+            dataGridView1.Columns[7].HeaderText = "Thành tiền";
+            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             conn.Close();
         }
         private void loadsauluu()

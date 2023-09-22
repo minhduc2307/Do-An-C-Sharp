@@ -388,7 +388,8 @@ SELECT SUM(TongTien) AS TongDoanhThu
 FROM HoaDon
 WHERE NgayBan BETWEEN '2023-09-18' AND '2023-09-20'
 
-select PHieuNhap.MaPN, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '2023-09-18' AND '2023-09-20'
+select PhieuNhap.MaPN, NgayNhap, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '2023-09-18' AND '2023-09-22' group by PhieuNhap.MaPN, NgayNhap, TongTien
 select * from ChiTietPN
 
+select * from PhieuNhap
 SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '2023-09-18' AND '2023-09-20'

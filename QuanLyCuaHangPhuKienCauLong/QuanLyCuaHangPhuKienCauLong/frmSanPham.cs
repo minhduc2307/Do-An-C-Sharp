@@ -81,6 +81,17 @@ namespace QuanLyCuaHangPhuKienCauLong
             DataSet ds = new DataSet();
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
+
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[0].HeaderText = "Mã sản phẩm";
+            dataGridView1.Columns[1].HeaderText = "Tên sản phẩm";
+            dataGridView1.Columns[2].HeaderText = "Xuất xứ";
+            dataGridView1.Columns[3].HeaderText = "Mô tả";
+            dataGridView1.Columns[4].HeaderText = "Giá bán";
+            dataGridView1.Columns[5].HeaderText = "Số lượng";
+            dataGridView1.Columns[6].HeaderText = "Ảnh";
+            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             conn.Close();
         }
         private void fill_combobox()

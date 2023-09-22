@@ -99,6 +99,13 @@ namespace QuanLyCuaHangPhuKienCauLong
             DataSet ds = new DataSet();
             da.Fill(ds);
             dgvNhaCungCap.DataSource = ds.Tables[0];
+
+            dgvNhaCungCap.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvNhaCungCap.Columns[0].HeaderText = "Mã nhà cung cấp";
+            dgvNhaCungCap.Columns[1].HeaderText = "Tên nhà cung cấp";
+            dgvNhaCungCap.Columns[2].HeaderText = "Địa chỉ";
+            dgvNhaCungCap.Columns[3].HeaderText = "Email";
+            dgvNhaCungCap.Columns[4].HeaderText = "Số điện thoại";
             conn.Close();
         }
         private void fill_combobox()

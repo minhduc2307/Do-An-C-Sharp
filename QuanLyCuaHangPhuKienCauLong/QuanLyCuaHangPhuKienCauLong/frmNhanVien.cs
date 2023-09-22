@@ -25,12 +25,21 @@ namespace QuanLyCuaHangPhuKienCauLong
         private void loaDataGridView()
         {
            
-            string query = "select nhanvien.manv ,tennv ,goitinh,ngaysinh,diachi,email, sdt,maquyen from nhanvien, TaiKhoan where taikhoan.manv=nhanvien.manv";
+            string query = "select nhanvien.manv ,tennv , goitinh, ngaysinh, diachi, email, sdt, maquyen from nhanvien, TaiKhoan where taikhoan.manv=nhanvien.manv";
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);
             dgvNhanVien.DataSource = ds.Tables[0];
+
+            dgvNhanVien.Columns[0].HeaderText = "Mã nhân viên";
+            dgvNhanVien.Columns[1].HeaderText = "Tên nhân viên";
+            dgvNhanVien.Columns[2].HeaderText = "Giới tính";
+            dgvNhanVien.Columns[3].HeaderText = "Ngày sinh";
+            dgvNhanVien.Columns[4].HeaderText = "Địa chỉ";
+            dgvNhanVien.Columns[5].HeaderText = "Email";
+            dgvNhanVien.Columns[6].HeaderText = "Số điện thoại";
+            dgvNhanVien.Columns[7].HeaderText = "Mã quyền";
             conn.Close();
         }
         private void fill_combobox()

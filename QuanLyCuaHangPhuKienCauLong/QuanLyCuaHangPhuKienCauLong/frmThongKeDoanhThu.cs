@@ -102,46 +102,60 @@ namespace QuanLyCuaHangPhuKienCauLong
                 string query = string.Format("select MaHD, NgayBan, TongTien from HoaDon WHERE NgayBan BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
                 DataSet ds = kn.LayDuLieu(query);
                 dgvThongKe.DataSource = ds.Tables[0];
+                dgvThongKe.Columns[0].HeaderText = "Mã hóa đơn";
+                dgvThongKe.Columns[1].HeaderText = "Ngày bán";
+                dgvThongKe.Columns[2].HeaderText = "Tổng tiền";
+
+                dgvThongKe.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvThongKe.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvThongKe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                
 
                 string query2 = string.Format("SELECT SUM(TongTien) FROM HoaDon WHERE NgayBan BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
                 DataSet ds2 = kn.LayDuLieu(query2);
                 object tongTienObj = ds2.Tables[0].Rows[0][0];
-                txtTongDoanhThu.Text = tongTienObj.ToString();
+                txtTong.Text = tongTienObj.ToString();
                 decimal tongTien = 0;
 
                 if (tongTienObj != null && decimal.TryParse(tongTienObj.ToString(), out tongTien))
                 {
-                    txtTongDoanhThu.Text = tongTien.ToString("N"); // Hiển thị giá trị số với định dạng số
+                    txtTong.Text = tongTien.ToString("N"); // Hiển thị giá trị số với định dạng số
                     lbBangChu1.Text = "Bằng chữ: " + ConvertNumberToWords(tongTien); // Chuyển số tiền thành chữ và gán vào lbBangChu1
                 }
                 else
                 {
-                    txtTongDoanhThu.Text = "Không hợp lệ";
+                    txtTong.Text = "Không hợp lệ";
                     lbBangChu1.Text = "";
                 }
             }
             else if (rdbPhieuNhap.Checked)
             {
                 btnLamMoi.PerformClick();
-                string query = string.Format("select PHieuNhap.MaPN, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
+                string query = string.Format("select PHieuNhap.MaPN, NgayNhap, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}' group by PhieuNhap.MaPN, NgayNhap, TongTien", dtpNgayBD.Value, dtpNgayKT.Value);
                 DataSet ds = kn.LayDuLieu(query);
                 dgvThongKe.DataSource = ds.Tables[0];
+                dgvThongKe.Columns[0].HeaderText = "Mã phiếu nhập";
+                dgvThongKe.Columns[1].HeaderText = "Ngày nhập";
+                dgvThongKe.Columns[2].HeaderText = "Tổng tiền";
 
+                dgvThongKe.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvThongKe.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvThongKe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                 string query2 = string.Format("SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
                 DataSet ds2 = kn.LayDuLieu(query2);
                 object tongTienObj = ds2.Tables[0].Rows[0][0];
-                txtTongDoanhThu.Text = tongTienObj.ToString();
+                txtTong.Text = tongTienObj.ToString();
                 decimal tongTien = 0;
 
                 if (tongTienObj != null && decimal.TryParse(tongTienObj.ToString(), out tongTien))
                 {
-                    txtTongDoanhThu.Text = tongTien.ToString("N"); // Hiển thị giá trị số với định dạng số
+                    txtTong.Text = tongTien.ToString("N"); // Hiển thị giá trị số với định dạng số
                     lbBangChu1.Text = "Bằng chữ: " + ConvertNumberToWords(tongTien); // Chuyển số tiền thành chữ và gán vào lbBangChu1
                 }
                 else
                 {
-                    txtTongDoanhThu.Text = "Không hợp lệ";
+                    txtTong.Text = "Không hợp lệ";
                     lbBangChu1.Text = "";
                 }
             }
@@ -152,7 +166,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             dgvThongKe.DataSource = null;
             rdbHoaDon.Checked = false;
             rdbPhieuNhap.Checked = false;
-            txtTongDoanhThu.Text = "";
+            txtTong.Text = "";
             lbBangChu1.Text = "";
 
         }
