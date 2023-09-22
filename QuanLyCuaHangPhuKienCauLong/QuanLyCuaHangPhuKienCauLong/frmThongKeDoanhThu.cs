@@ -98,6 +98,7 @@ namespace QuanLyCuaHangPhuKienCauLong
         {
             if (rdbHoaDon.Checked)
             {
+                btnLamMoi.PerformClick();
                 string query = string.Format("select MaHD, NgayBan, TongTien from HoaDon WHERE NgayBan BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
                 DataSet ds = kn.LayDuLieu(query);
                 dgvThongKe.DataSource = ds.Tables[0];
@@ -117,14 +118,48 @@ namespace QuanLyCuaHangPhuKienCauLong
                 {
                     txtTongDoanhThu.Text = "Không hợp lệ";
                     lbBangChu1.Text = "";
-                } 
+                }
             }
             else if (rdbPhieuNhap.Checked)
             {
+                btnLamMoi.PerformClick();
                 string query = string.Format("select PHieuNhap.MaPN, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
                 DataSet ds = kn.LayDuLieu(query);
                 dgvThongKe.DataSource = ds.Tables[0];
+
+
+                string query2 = string.Format("SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
+                DataSet ds2 = kn.LayDuLieu(query2);
+                object tongTienObj = ds2.Tables[0].Rows[0][0];
+                txtTongDoanhThu.Text = tongTienObj.ToString();
+                decimal tongTien = 0;
+
+                if (tongTienObj != null && decimal.TryParse(tongTienObj.ToString(), out tongTien))
+                {
+                    txtTongDoanhThu.Text = tongTien.ToString("N"); // Hiển thị giá trị số với định dạng số
+                    lbBangChu1.Text = "Bằng chữ: " + ConvertNumberToWords(tongTien); // Chuyển số tiền thành chữ và gán vào lbBangChu1
+                }
+                else
+                {
+                    txtTongDoanhThu.Text = "Không hợp lệ";
+                    lbBangChu1.Text = "";
+                }
             }
+        }
+
+        public void LamMoi()
+        {
+            dgvThongKe.DataSource = null;
+            rdbHoaDon.Checked = false;
+            rdbPhieuNhap.Checked = false;
+            txtTongDoanhThu.Text = "";
+            lbBangChu1.Text = "";
+
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            LamMoi();
         }
     }
 }

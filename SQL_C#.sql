@@ -383,7 +383,12 @@ BEGIN
 END;
 
 
-select MaHD, TongTien from HoaDon WHERE NgayBan BETWEEN '2023-09-18' AND '2023-09-20'
+select MaHD, NgayBan, TongTien from HoaDon WHERE NgayBan BETWEEN '2023-09-18' AND '2023-09-20'
 SELECT SUM(TongTien) AS TongDoanhThu
 FROM HoaDon
 WHERE NgayBan BETWEEN '2023-09-18' AND '2023-09-20'
+
+select PHieuNhap.MaPN, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '2023-09-18' AND '2023-09-20'
+select * from ChiTietPN
+
+SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '2023-09-18' AND '2023-09-20'
