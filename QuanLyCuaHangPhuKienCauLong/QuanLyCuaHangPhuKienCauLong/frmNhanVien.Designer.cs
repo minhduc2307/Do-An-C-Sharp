@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanVien));
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.Label6 = new System.Windows.Forms.Label();
             this.txttaiKhoan = new System.Windows.Forms.TextBox();
@@ -78,7 +79,7 @@
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowTemplate.Height = 24;
             this.dgvNhanVien.Size = new System.Drawing.Size(810, 194);
-            this.dgvNhanVien.TabIndex = 11;
+            this.dgvNhanVien.TabIndex = 18;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
             // Label6
@@ -98,7 +99,7 @@
             this.txttaiKhoan.Multiline = true;
             this.txttaiKhoan.Name = "txttaiKhoan";
             this.txttaiKhoan.Size = new System.Drawing.Size(180, 27);
-            this.txttaiKhoan.TabIndex = 28;
+            this.txttaiKhoan.TabIndex = 7;
             // 
             // Label7
             // 
@@ -112,12 +113,13 @@
             // 
             // btnThem
             // 
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.Location = new System.Drawing.Point(82, 20);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(98, 30);
-            this.btnThem.TabIndex = 0;
+            this.btnThem.TabIndex = 10;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -161,7 +163,7 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(180, 27);
-            this.txtMatKhau.TabIndex = 39;
+            this.txtMatKhau.TabIndex = 8;
             // 
             // label12
             // 
@@ -180,7 +182,7 @@
             this.txtSDT.Multiline = true;
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(180, 27);
-            this.txtSDT.TabIndex = 37;
+            this.txtSDT.TabIndex = 6;
             // 
             // label11
             // 
@@ -199,7 +201,7 @@
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(180, 27);
-            this.txtEmail.TabIndex = 35;
+            this.txtEmail.TabIndex = 5;
             // 
             // label8
             // 
@@ -217,7 +219,7 @@
             this.cmbQuyen.Location = new System.Drawing.Point(609, 234);
             this.cmbQuyen.Name = "cmbQuyen";
             this.cmbQuyen.Size = new System.Drawing.Size(86, 21);
-            this.cmbQuyen.TabIndex = 33;
+            this.cmbQuyen.TabIndex = 9;
             // 
             // cmbGioiTinh
             // 
@@ -228,7 +230,7 @@
             this.cmbGioiTinh.Location = new System.Drawing.Point(169, 149);
             this.cmbGioiTinh.Name = "cmbGioiTinh";
             this.cmbGioiTinh.Size = new System.Drawing.Size(64, 21);
-            this.cmbGioiTinh.TabIndex = 32;
+            this.cmbGioiTinh.TabIndex = 2;
             // 
             // dtpNgaySinh
             // 
@@ -236,7 +238,7 @@
             this.dtpNgaySinh.Location = new System.Drawing.Point(170, 193);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(180, 20);
-            this.dtpNgaySinh.TabIndex = 31;
+            this.dtpNgaySinh.TabIndex = 3;
             // 
             // txtDiaChi
             // 
@@ -245,7 +247,7 @@
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(180, 27);
-            this.txtDiaChi.TabIndex = 24;
+            this.txtDiaChi.TabIndex = 4;
             // 
             // Label9
             // 
@@ -284,7 +286,7 @@
             this.txtTenNhanVien.Multiline = true;
             this.txtTenNhanVien.Name = "txtTenNhanVien";
             this.txtTenNhanVien.Size = new System.Drawing.Size(180, 27);
-            this.txtTenNhanVien.TabIndex = 9;
+            this.txtTenNhanVien.TabIndex = 1;
             // 
             // Label3
             // 
@@ -328,11 +330,13 @@
             // 
             // btnSua
             // 
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(199, 20);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(98, 30);
-            this.btnSua.TabIndex = 1;
+            this.btnSua.TabIndex = 12;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -365,16 +369,17 @@
             this.cmbTenNV.Location = new System.Drawing.Point(178, 28);
             this.cmbTenNV.Name = "cmbTenNV";
             this.cmbTenNV.Size = new System.Drawing.Size(238, 21);
-            this.cmbTenNV.TabIndex = 13;
+            this.cmbTenNV.TabIndex = 16;
             // 
             // btnTimKiem
             // 
+            this.btnTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.Image")));
             this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTimKiem.Location = new System.Drawing.Point(435, 25);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(98, 30);
-            this.btnTimKiem.TabIndex = 12;
+            this.btnTimKiem.TabIndex = 17;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -391,45 +396,52 @@
             // 
             // btnLuu
             // 
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.Location = new System.Drawing.Point(433, 20);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(98, 30);
-            this.btnLuu.TabIndex = 6;
+            this.btnLuu.TabIndex = 11;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnDong
             // 
+            this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
+            this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDong.Location = new System.Drawing.Point(689, 20);
             this.btnDong.Margin = new System.Windows.Forms.Padding(2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(98, 30);
-            this.btnDong.TabIndex = 5;
+            this.btnDong.TabIndex = 15;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnHienThi
             // 
+            this.btnHienThi.Image = ((System.Drawing.Image)(resources.GetObject("btnHienThi.Image")));
+            this.btnHienThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHienThi.Location = new System.Drawing.Point(550, 20);
             this.btnHienThi.Margin = new System.Windows.Forms.Padding(2);
             this.btnHienThi.Name = "btnHienThi";
             this.btnHienThi.Size = new System.Drawing.Size(120, 30);
-            this.btnHienThi.TabIndex = 3;
+            this.btnHienThi.TabIndex = 14;
             this.btnHienThi.Text = "Làm mới ";
             this.btnHienThi.UseVisualStyleBackColor = true;
             this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);
             // 
             // btnXoa
             // 
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.Location = new System.Drawing.Point(316, 20);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(98, 30);
-            this.btnXoa.TabIndex = 2;
+            this.btnXoa.TabIndex = 13;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -456,6 +468,7 @@
             this.Controls.Add(this.dgvNhanVien);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNhanVien";
             this.Text = "frmNhanVien";

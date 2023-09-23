@@ -135,14 +135,13 @@ namespace QuanLyCuaHangPhuKienCauLong
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
-            btnMoAnh.Enabled = false;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string query = string.Format("insert into SanPham values ('{0}',N'{1}',N'{2}',N'{3}','{4}','{5}','{6}')",
-               txtMaSanPham.Text, txtTenSanPham.Text, txtXuatXu.Text, txtMoTa.Text, txtGiaBan.Text.Replace(",", "."),updowSL.Value,txtAnh);
+            string query = string.Format("insert into SanPham values ('{0}',N'{1}',N'{2}',N'{3}','{4}','{5}',N'{6}')",
+               txtMaSanPham.Text, txtTenSanPham.Text, txtXuatXu.Text, txtMoTa.Text, txtGiaBan.Text.Replace(",", "."),updowSL.Value,txtAnh.Text);
             SqlCommand cmd = new SqlCommand(query, conn);
             int r = cmd.ExecuteNonQuery();
             conn.Close();
@@ -161,18 +160,6 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
         }
 
-        private void txtAnh_TextChanged(object sender, EventArgs e)
-        {
-            if (txtAnh.Text == "") 
-            {
-                btnMoAnh.Enabled = false;
-            }
-            if(txtAnh.Text!="")
-            {
-                btnMoAnh.Enabled = true;
-            }
-        }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lammoi();
@@ -185,6 +172,20 @@ namespace QuanLyCuaHangPhuKienCauLong
                 txtMoTa.Text = row.Cells["MoTa"].Value.ToString();
                 txtGiaBan.Text = row.Cells["GiaBan"].Value.ToString();
                 txtAnh.Text = row.Cells["Anh"].Value.ToString();
+                try
+                {
+                    if (!string.IsNullOrEmpty(txtAnh.Text))
+                    {
+                        string imagePath = txtAnh.Text;
+                        pbAnhSanPham.Image = Image.FromFile(imagePath);
+                        pbAnhSanPham.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ ở đây, ví dụ: hiển thị một thông báo lỗi
+                    MessageBox.Show("Lỗi khi đọc ảnh: " + ex.Message);
+                }
                 updowSL.Text = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
                 btnThem.Enabled = false;
                 btnXoa.Enabled = true;
@@ -283,27 +284,15 @@ namespace QuanLyCuaHangPhuKienCauLong
 
         private void btnMoAnh_Click(object sender, EventArgs e)
         {
-            string imagePath = txtAnh.Text;
-            pbAnhSanPham.Image = null;
-            try
+            OpenFileDialog dlgOpen = new OpenFileDialog();
+            dlgOpen.Filter = "Bitmap(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|GIF(*.gif)|*.gif|All files(*.*)|*.*";
+            dlgOpen.FilterIndex = 2;
+            dlgOpen.Title = "Chọn ảnh minh hoạ cho sản phẩm";
+            if (dlgOpen.ShowDialog() == DialogResult.OK)
             {
-                if (System.IO.File.Exists(imagePath))
-                {
-                    // Tạo một Bitmap từ đường dẫn ảnh
-                    Bitmap image = new Bitmap(imagePath);
-
-                    // Hiển thị ảnh trong PictureBox
-                    pbAnhSanPham.Image = image;
-                    pbAnhSanPham.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-                else
-                {
-                    MessageBox.Show("Đường dẫn ảnh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAnh.Text = dlgOpen.FileName; // Gán đường dẫn với Encoding UTF-8
+                pbAnhSanPham.Image = Image.FromFile(dlgOpen.FileName); // Hiển thị ảnh
+                pbAnhSanPham.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
     }
