@@ -431,6 +431,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
+                txtMaHD.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 conn.Close();
             }
             catch (Exception ex)

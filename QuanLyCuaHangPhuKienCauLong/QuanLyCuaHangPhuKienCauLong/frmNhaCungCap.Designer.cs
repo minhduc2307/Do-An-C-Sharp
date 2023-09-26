@@ -67,7 +67,7 @@
             this.btnLammoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLammoi.Name = "btnLammoi";
             this.btnLammoi.Size = new System.Drawing.Size(98, 30);
-            this.btnLammoi.TabIndex = 9;
+            this.btnLammoi.TabIndex = 10;
             this.btnLammoi.Text = "Làm mới";
             this.btnLammoi.UseVisualStyleBackColor = true;
             this.btnLammoi.Click += new System.EventHandler(this.btnLammoi_Click);
@@ -80,7 +80,7 @@
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(98, 30);
-            this.btnXoa.TabIndex = 7;
+            this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -93,7 +93,7 @@
             this.txtSoDienThoai.Multiline = true;
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(180, 27);
-            this.txtSoDienThoai.TabIndex = 3;
+            this.txtSoDienThoai.TabIndex = 5;
             // 
             // Label7
             // 
@@ -113,7 +113,7 @@
             this.btnDong.Margin = new System.Windows.Forms.Padding(2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(98, 30);
-            this.btnDong.TabIndex = 10;
+            this.btnDong.TabIndex = 11;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
@@ -126,7 +126,7 @@
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(180, 26);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 4;
             // 
             // Label8
             // 
@@ -146,7 +146,7 @@
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(180, 27);
-            this.txtDiaChi.TabIndex = 4;
+            this.txtDiaChi.TabIndex = 2;
             // 
             // Label9
             // 
@@ -176,7 +176,7 @@
             this.cmbTimKiem.Location = new System.Drawing.Point(162, 17);
             this.cmbTimKiem.Name = "cmbTimKiem";
             this.cmbTimKiem.Size = new System.Drawing.Size(237, 21);
-            this.cmbTimKiem.TabIndex = 11;
+            this.cmbTimKiem.TabIndex = 12;
             // 
             // label4
             // 
@@ -196,7 +196,7 @@
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(98, 30);
-            this.btnTimKiem.TabIndex = 12;
+            this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -209,7 +209,7 @@
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(98, 30);
-            this.btnLuu.TabIndex = 8;
+            this.btnLuu.TabIndex = 9;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -222,7 +222,7 @@
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(98, 30);
-            this.btnSua.TabIndex = 6;
+            this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -235,7 +235,7 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(98, 30);
-            this.btnThem.TabIndex = 1;
+            this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -248,7 +248,7 @@
             this.txtTenNhaCungCap.Multiline = true;
             this.txtTenNhaCungCap.Name = "txtTenNhaCungCap";
             this.txtTenNhaCungCap.Size = new System.Drawing.Size(180, 27);
-            this.txtTenNhaCungCap.TabIndex = 2;
+            this.txtTenNhaCungCap.TabIndex = 3;
             // 
             // Label3
             // 
@@ -288,7 +288,7 @@
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.RowTemplate.Height = 24;
             this.dgvNhaCungCap.Size = new System.Drawing.Size(702, 153);
-            this.dgvNhaCungCap.TabIndex = 13;
+            this.dgvNhaCungCap.TabIndex = 14;
             this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
             // 
             // txtMaNhaCungCap
@@ -300,7 +300,7 @@
             this.txtMaNhaCungCap.Multiline = true;
             this.txtMaNhaCungCap.Name = "txtMaNhaCungCap";
             this.txtMaNhaCungCap.Size = new System.Drawing.Size(180, 27);
-            this.txtMaNhaCungCap.TabIndex = 7;
+            this.txtMaNhaCungCap.TabIndex = 1;
             // 
             // Panel2
             // 

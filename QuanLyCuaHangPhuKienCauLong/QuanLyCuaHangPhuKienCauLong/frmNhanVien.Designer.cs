@@ -79,7 +79,7 @@
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowTemplate.Height = 24;
             this.dgvNhanVien.Size = new System.Drawing.Size(810, 194);
-            this.dgvNhanVien.TabIndex = 18;
+            this.dgvNhanVien.TabIndex = 19;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
             // Label6
@@ -99,7 +99,7 @@
             this.txttaiKhoan.Multiline = true;
             this.txttaiKhoan.Name = "txttaiKhoan";
             this.txttaiKhoan.Size = new System.Drawing.Size(180, 27);
-            this.txttaiKhoan.TabIndex = 7;
+            this.txttaiKhoan.TabIndex = 6;
             // 
             // Label7
             // 
@@ -119,7 +119,7 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(98, 30);
-            this.btnThem.TabIndex = 10;
+            this.btnThem.TabIndex = 11;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -182,7 +182,7 @@
             this.txtSDT.Multiline = true;
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(180, 27);
-            this.txtSDT.TabIndex = 6;
+            this.txtSDT.TabIndex = 4;
             // 
             // label11
             // 
@@ -201,7 +201,7 @@
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(180, 27);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 2;
             // 
             // label8
             // 
@@ -219,7 +219,7 @@
             this.cmbQuyen.Location = new System.Drawing.Point(609, 234);
             this.cmbQuyen.Name = "cmbQuyen";
             this.cmbQuyen.Size = new System.Drawing.Size(86, 21);
-            this.cmbQuyen.TabIndex = 9;
+            this.cmbQuyen.TabIndex = 10;
             // 
             // cmbGioiTinh
             // 
@@ -230,7 +230,7 @@
             this.cmbGioiTinh.Location = new System.Drawing.Point(169, 149);
             this.cmbGioiTinh.Name = "cmbGioiTinh";
             this.cmbGioiTinh.Size = new System.Drawing.Size(64, 21);
-            this.cmbGioiTinh.TabIndex = 2;
+            this.cmbGioiTinh.TabIndex = 5;
             // 
             // dtpNgaySinh
             // 
@@ -238,7 +238,7 @@
             this.dtpNgaySinh.Location = new System.Drawing.Point(170, 193);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(180, 20);
-            this.dtpNgaySinh.TabIndex = 3;
+            this.dtpNgaySinh.TabIndex = 7;
             // 
             // txtDiaChi
             // 
@@ -247,7 +247,7 @@
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(180, 27);
-            this.txtDiaChi.TabIndex = 4;
+            this.txtDiaChi.TabIndex = 9;
             // 
             // Label9
             // 
@@ -286,7 +286,7 @@
             this.txtTenNhanVien.Multiline = true;
             this.txtTenNhanVien.Name = "txtTenNhanVien";
             this.txtTenNhanVien.Size = new System.Drawing.Size(180, 27);
-            this.txtTenNhanVien.TabIndex = 1;
+            this.txtTenNhanVien.TabIndex = 3;
             // 
             // Label3
             // 
@@ -306,7 +306,7 @@
             this.txtMaNhanVien.Multiline = true;
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(180, 27);
-            this.txtMaNhanVien.TabIndex = 7;
+            this.txtMaNhanVien.TabIndex = 1;
             // 
             // Label2
             // 
@@ -369,7 +369,7 @@
             this.cmbTenNV.Location = new System.Drawing.Point(178, 28);
             this.cmbTenNV.Name = "cmbTenNV";
             this.cmbTenNV.Size = new System.Drawing.Size(238, 21);
-            this.cmbTenNV.TabIndex = 16;
+            this.cmbTenNV.TabIndex = 17;
             // 
             // btnTimKiem
             // 
@@ -379,7 +379,7 @@
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(98, 30);
-            this.btnTimKiem.TabIndex = 17;
+            this.btnTimKiem.TabIndex = 18;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -402,7 +402,7 @@
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(98, 30);
-            this.btnLuu.TabIndex = 11;
+            this.btnLuu.TabIndex = 14;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -415,7 +415,7 @@
             this.btnDong.Margin = new System.Windows.Forms.Padding(2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(98, 30);
-            this.btnDong.TabIndex = 15;
+            this.btnDong.TabIndex = 16;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
@@ -428,7 +428,7 @@
             this.btnHienThi.Margin = new System.Windows.Forms.Padding(2);
             this.btnHienThi.Name = "btnHienThi";
             this.btnHienThi.Size = new System.Drawing.Size(120, 30);
-            this.btnHienThi.TabIndex = 14;
+            this.btnHienThi.TabIndex = 15;
             this.btnHienThi.Text = "Làm mới ";
             this.btnHienThi.UseVisualStyleBackColor = true;
             this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);

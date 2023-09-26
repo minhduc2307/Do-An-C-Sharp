@@ -162,7 +162,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             txttaiKhoan.Enabled = true;
             txtMatKhau.Enabled = true;
             cmbQuyen.Enabled = true;
-           
+            fill_combobox();
         }
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {

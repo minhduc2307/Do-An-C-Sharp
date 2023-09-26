@@ -101,7 +101,7 @@
             this.txtAnh.Multiline = true;
             this.txtAnh.Name = "txtAnh";
             this.txtAnh.Size = new System.Drawing.Size(180, 79);
-            this.txtAnh.TabIndex = 32;
+            this.txtAnh.TabIndex = 6;
             // 
             // Panel2
             // 
@@ -135,7 +135,7 @@
             this.updowSL.Location = new System.Drawing.Point(444, 202);
             this.updowSL.Name = "updowSL";
             this.updowSL.Size = new System.Drawing.Size(38, 24);
-            this.updowSL.TabIndex = 7;
+            this.updowSL.TabIndex = 8;
             // 
             // Label4
             // 
@@ -173,7 +173,7 @@
             this.txtGiaBan.Multiline = true;
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(180, 27);
-            this.txtGiaBan.TabIndex = 6;
+            this.txtGiaBan.TabIndex = 7;
             // 
             // label10
             // 
@@ -293,7 +293,7 @@
             this.btnTimkiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Size = new System.Drawing.Size(98, 30);
-            this.btnTimkiem.TabIndex = 14;
+            this.btnTimkiem.TabIndex = 16;
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.UseVisualStyleBackColor = true;
             this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
@@ -304,7 +304,7 @@
             this.cmbTimkiem.Location = new System.Drawing.Point(140, 14);
             this.cmbTimkiem.Name = "cmbTimkiem";
             this.cmbTimkiem.Size = new System.Drawing.Size(217, 21);
-            this.cmbTimkiem.TabIndex = 13;
+            this.cmbTimkiem.TabIndex = 15;
             // 
             // label6
             // 
@@ -338,7 +338,7 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(98, 30);
-            this.btnThem.TabIndex = 1;
+            this.btnThem.TabIndex = 9;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -352,7 +352,7 @@
             this.btnDong.Margin = new System.Windows.Forms.Padding(2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(98, 30);
-            this.btnDong.TabIndex = 12;
+            this.btnDong.TabIndex = 14;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
@@ -366,7 +366,7 @@
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(98, 30);
-            this.btnSua.TabIndex = 8;
+            this.btnSua.TabIndex = 10;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -380,7 +380,7 @@
             this.btnLammoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLammoi.Name = "btnLammoi";
             this.btnLammoi.Size = new System.Drawing.Size(137, 30);
-            this.btnLammoi.TabIndex = 11;
+            this.btnLammoi.TabIndex = 13;
             this.btnLammoi.Text = "Làm mới";
             this.btnLammoi.UseVisualStyleBackColor = true;
             this.btnLammoi.Click += new System.EventHandler(this.btnLammoi_Click);
@@ -394,7 +394,7 @@
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(98, 30);
-            this.btnXoa.TabIndex = 9;
+            this.btnXoa.TabIndex = 11;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -408,7 +408,7 @@
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(98, 30);
-            this.btnLuu.TabIndex = 10;
+            this.btnLuu.TabIndex = 12;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -419,7 +419,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 241);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(935, 125);
-            this.dataGridView1.TabIndex = 15;
+            this.dataGridView1.TabIndex = 17;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // frmSanPham

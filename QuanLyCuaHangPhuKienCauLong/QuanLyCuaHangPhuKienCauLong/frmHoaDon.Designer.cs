@@ -96,7 +96,7 @@
             this.txtThanhTien.Margin = new System.Windows.Forms.Padding(2);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Size = new System.Drawing.Size(133, 23);
-            this.txtThanhTien.TabIndex = 7;
+            this.txtThanhTien.TabIndex = 8;
             // 
             // Label11
             // 
@@ -126,7 +126,7 @@
             this.txtDonGia.Margin = new System.Windows.Forms.Padding(2);
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(133, 23);
-            this.txtDonGia.TabIndex = 4;
+            this.txtDonGia.TabIndex = 6;
             // 
             // Label9
             // 
@@ -183,7 +183,7 @@
             this.upDowGiamGia.Location = new System.Drawing.Point(401, 53);
             this.upDowGiamGia.Name = "upDowGiamGia";
             this.upDowGiamGia.Size = new System.Drawing.Size(56, 23);
-            this.upDowGiamGia.TabIndex = 6;
+            this.upDowGiamGia.TabIndex = 7;
             // 
             // upDowSoLuong
             // 
@@ -198,7 +198,7 @@
             this.cmbMaSP.Location = new System.Drawing.Point(115, 10);
             this.cmbMaSP.Name = "cmbMaSP";
             this.cmbMaSP.Size = new System.Drawing.Size(131, 25);
-            this.cmbMaSP.TabIndex = 3;
+            this.cmbMaSP.TabIndex = 4;
             // 
             // GroupBox2
             // 
@@ -227,7 +227,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(914, 146);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel6
@@ -284,7 +284,7 @@
             this.btnXoaHD.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHD.Name = "btnXoaHD";
             this.btnXoaHD.Size = new System.Drawing.Size(99, 31);
-            this.btnXoaHD.TabIndex = 9;
+            this.btnXoaHD.TabIndex = 10;
             this.btnXoaHD.Text = "Xóa hóa đơn";
             this.btnXoaHD.UseVisualStyleBackColor = true;
             this.btnXoaHD.Click += new System.EventHandler(this.btnXoaHD_Click);
@@ -295,7 +295,7 @@
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(112, 30);
-            this.btnLamMoi.TabIndex = 11;
+            this.btnLamMoi.TabIndex = 14;
             this.btnLamMoi.Text = "Làm mới ";
             this.btnLamMoi.UseVisualStyleBackColor = true;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
@@ -306,7 +306,7 @@
             this.btnXoaSP.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaSP.Name = "btnXoaSP";
             this.btnXoaSP.Size = new System.Drawing.Size(108, 31);
-            this.btnXoaSP.TabIndex = 5;
+            this.btnXoaSP.TabIndex = 12;
             this.btnXoaSP.Text = "Xóa mặt hàng";
             this.btnXoaSP.UseVisualStyleBackColor = true;
             this.btnXoaSP.Click += new System.EventHandler(this.btnXoaSP_Click);
@@ -317,7 +317,7 @@
             this.btnDong.Margin = new System.Windows.Forms.Padding(2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(99, 31);
-            this.btnDong.TabIndex = 13;
+            this.btnDong.TabIndex = 16;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
@@ -329,7 +329,7 @@
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(105, 31);
-            this.btnLuu.TabIndex = 8;
+            this.btnLuu.TabIndex = 13;
             this.btnLuu.Text = "Lưu mặt hàng";
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -340,7 +340,7 @@
             this.btnIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(99, 31);
-            this.btnIn.TabIndex = 12;
+            this.btnIn.TabIndex = 15;
             this.btnIn.Text = "In hóa đơn";
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -351,7 +351,7 @@
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(108, 31);
-            this.btnSua.TabIndex = 10;
+            this.btnSua.TabIndex = 11;
             this.btnSua.Text = "Sửa mặt hàng";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -362,7 +362,7 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(109, 31);
-            this.btnThem.TabIndex = 1;
+            this.btnThem.TabIndex = 9;
             this.btnThem.Text = "Thêm hóa đơn";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -386,7 +386,7 @@
             this.TxtMaNV.Margin = new System.Windows.Forms.Padding(2);
             this.TxtMaNV.Name = "TxtMaNV";
             this.TxtMaNV.Size = new System.Drawing.Size(161, 23);
-            this.TxtMaNV.TabIndex = 6;
+            this.TxtMaNV.TabIndex = 2;
             // 
             // Label5
             // 
@@ -405,7 +405,7 @@
             this.dtpNgayBan.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgayBan.Name = "dtpNgayBan";
             this.dtpNgayBan.Size = new System.Drawing.Size(169, 23);
-            this.dtpNgayBan.TabIndex = 2;
+            this.dtpNgayBan.TabIndex = 3;
             // 
             // Label4
             // 
@@ -473,7 +473,7 @@
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(99, 29);
-            this.btnTimKiem.TabIndex = 15;
+            this.btnTimKiem.TabIndex = 18;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -485,7 +485,7 @@
             this.cmbMaHoaDon.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMaHoaDon.Name = "cmbMaHoaDon";
             this.cmbMaHoaDon.Size = new System.Drawing.Size(150, 21);
-            this.cmbMaHoaDon.TabIndex = 14;
+            this.cmbMaHoaDon.TabIndex = 17;
             this.cmbMaHoaDon.SelectedIndexChanged += new System.EventHandler(this.cmbMaHoaDon_SelectedIndexChanged);
             // 
             // Label1

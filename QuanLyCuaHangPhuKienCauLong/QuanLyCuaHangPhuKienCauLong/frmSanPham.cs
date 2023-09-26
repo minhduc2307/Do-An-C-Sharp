@@ -71,6 +71,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             updowSL.Value = 0;
             cmbTimkiem.Text = "";
             pbAnhSanPham.Image = null;
+            fill_combobox();
         }
         private void loaDataGridView()
         {
@@ -204,12 +205,13 @@ namespace QuanLyCuaHangPhuKienCauLong
             if (rowsAffected > 0)
             {
                 MessageBox.Show("Sửa thành công");
-                lammoi();
-                loaDataGridView();
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
-                btnLuu.Enabled = false;
-                btnThem.Enabled = true;
+                //lammoi();
+                //loaDataGridView();
+                //btnSua.Enabled = false;
+                //btnXoa.Enabled = false;
+                //btnLuu.Enabled = false;
+                //btnThem.Enabled = true;
+                btnLammoi.PerformClick();
             }
         }
 
@@ -254,13 +256,14 @@ namespace QuanLyCuaHangPhuKienCauLong
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Xóa thành công");
-                            lammoi();
-                            loaDataGridView();
-                            btnSua.Enabled = false;
-                            btnXoa.Enabled = false;
-                            btnLuu.Enabled = false;
-                            btnThem.Enabled = true;
-                            fill_combobox();
+                            //lammoi();
+                            //loaDataGridView();
+                            //btnSua.Enabled = false;
+                            //btnXoa.Enabled = false;
+                            //btnLuu.Enabled = false;
+                            //btnThem.Enabled = true;
+                            //fill_combobox();
+                            btnLammoi.PerformClick();
                         }
                     }   
                 }
