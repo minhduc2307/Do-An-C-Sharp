@@ -71,43 +71,63 @@ namespace QuanLyCuaHangPhuKienCauLong
             updowSL.Value = 0;
             cmbTimkiem.Text = "";
             pbAnhSanPham.Image = null;
+            btnLuu.Enabled = false;
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
             fill_combobox();
         }
         private void loaDataGridView()
         {
+            try
+            {
+                string query = "select * from SanPham ";
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
 
-            string query = "select * from SanPham ";
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
-
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[0].HeaderText = "Mã sản phẩm";
-            dataGridView1.Columns[1].HeaderText = "Tên sản phẩm";
-            dataGridView1.Columns[2].HeaderText = "Xuất xứ";
-            dataGridView1.Columns[3].HeaderText = "Mô tả";
-            dataGridView1.Columns[4].HeaderText = "Giá bán";
-            dataGridView1.Columns[5].HeaderText = "Số lượng";
-            dataGridView1.Columns[6].HeaderText = "Ảnh";
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            conn.Close();
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[0].HeaderText = "Mã sản phẩm";
+                dataGridView1.Columns[1].HeaderText = "Tên sản phẩm";
+                dataGridView1.Columns[2].HeaderText = "Xuất xứ";
+                dataGridView1.Columns[3].HeaderText = "Mô tả";
+                dataGridView1.Columns[4].HeaderText = "Giá bán";
+                dataGridView1.Columns[5].HeaderText = "Số lượng";
+                dataGridView1.Columns[6].HeaderText = "Ảnh";
+                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);                
+            }
+            
         }
+
         private void fill_combobox()
         {
-            cmbTimkiem.Items.Clear();
-            string query = "select TenSP from SanPham";
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                cmbTimkiem.Items.Add(reader["TenSP"].ToString());
+                cmbTimkiem.Items.Clear();
+                string query = "select TenSP from SanPham";
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cmbTimkiem.Items.Add(reader["TenSP"].ToString());
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             string[] partsDay = DateTime.Now.ToShortDateString().Split('/');
@@ -140,24 +160,27 @@ namespace QuanLyCuaHangPhuKienCauLong
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            string query = string.Format("insert into SanPham values ('{0}',N'{1}',N'{2}',N'{3}','{4}','{5}',N'{6}')",
-               txtMaSanPham.Text, txtTenSanPham.Text, txtXuatXu.Text, txtMoTa.Text, txtGiaBan.Text.Replace(",", "."),updowSL.Value,txtAnh.Text);
-            SqlCommand cmd = new SqlCommand(query, conn);
-            int r = cmd.ExecuteNonQuery();
-            conn.Close();
-            if (r > 0)
+            try
             {
-                MessageBox.Show("Lưu thành công");
-                lammoi();
-                loaDataGridView();
-                btnLuu.Enabled = false;
-                btnThem.Enabled = true;
-                fill_combobox();
+                conn.Open();
+                string query = string.Format("insert into SanPham values ('{0}',N'{1}',N'{2}',N'{3}','{4}','{5}',N'{6}')",
+                   txtMaSanPham.Text, txtTenSanPham.Text, txtXuatXu.Text, txtMoTa.Text, txtGiaBan.Text.Replace(",", "."), updowSL.Value, txtAnh.Text);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int r = cmd.ExecuteNonQuery();
+                conn.Close();
+                if (r > 0)
+                {
+                    MessageBox.Show("Lưu thành công");
+                    btnLammoi.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show("Lưu thất bại");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Lưu thất bại");
+                MessageBox.Show("Lỗi: " + ex.Message);                
             }
         }
 
@@ -184,8 +207,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý ngoại lệ ở đây, ví dụ: hiển thị một thông báo lỗi
-                    MessageBox.Show("Lỗi khi đọc ảnh: " + ex.Message);
+                    MessageBox.Show("Lỗi khi đọc ảnh do sai đường dẫn ảnh: " + ex.Message);
                 }
                 updowSL.Text = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
                 btnThem.Enabled = false;
@@ -196,33 +218,31 @@ namespace QuanLyCuaHangPhuKienCauLong
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            string query = string.Format("update SanPham set TenSP=N'{1}', XuatXu=N'{2}',MoTa=N'{3}',GiaBan='{4}',SoLuong='{5}',Anh=N'{6}' where  MaSP='{0}'",
-                txtMaSanPham.Text, txtTenSanPham.Text, txtXuatXu.Text, txtMoTa.Text, txtGiaBan.Text.Replace(",", "."),updowSL.Value,txtAnh.Text);
-            SqlCommand cmd = new SqlCommand(query, conn);
-            int rowsAffected = cmd.ExecuteNonQuery();
-            conn.Close();
-            if (rowsAffected > 0)
+            try
             {
-                MessageBox.Show("Sửa thành công");
-                //lammoi();
-                //loaDataGridView();
-                //btnSua.Enabled = false;
-                //btnXoa.Enabled = false;
-                //btnLuu.Enabled = false;
-                //btnThem.Enabled = true;
-                btnLammoi.PerformClick();
+                conn.Open();
+                string query = string.Format("update SanPham set TenSP=N'{1}', XuatXu=N'{2}',MoTa=N'{3}',GiaBan='{4}',SoLuong='{5}',Anh=N'{6}' where  MaSP='{0}'",
+                    txtMaSanPham.Text, txtTenSanPham.Text, txtXuatXu.Text, txtMoTa.Text, txtGiaBan.Text.Replace(",", "."), updowSL.Value, txtAnh.Text);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Sửa thành công");
+                    btnLammoi.PerformClick();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            
         }
 
         private void btnLammoi_Click(object sender, EventArgs e)
         {
             lammoi();
             loaDataGridView();
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            btnLuu.Enabled = false;
-            btnThem.Enabled = true;
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -256,13 +276,6 @@ namespace QuanLyCuaHangPhuKienCauLong
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Xóa thành công");
-                            //lammoi();
-                            //loaDataGridView();
-                            //btnSua.Enabled = false;
-                            //btnXoa.Enabled = false;
-                            //btnLuu.Enabled = false;
-                            //btnThem.Enabled = true;
-                            //fill_combobox();
                             btnLammoi.PerformClick();
                         }
                     }   
@@ -276,13 +289,21 @@ namespace QuanLyCuaHangPhuKienCauLong
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            string query = string.Format("select * from SanPham where TenSP like N'%{0}%' ", cmbTimkiem.Text);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
-            conn.Close();
+            try
+            {
+                string query = string.Format("select * from SanPham where TenSP like N'%{0}%' ", cmbTimkiem.Text);
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi" + ex.Message);
+            }
+            
         }
 
         private void btnMoAnh_Click(object sender, EventArgs e)

@@ -25,7 +25,6 @@ D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPh
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\bin\Debug\QuanLyCuaHangPhuKienCauLong.exe
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\bin\Debug\QuanLyCuaHangPhuKienCauLong.pdb
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.csprojResolveAssemblyReference.cache
-D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.Form1.resources
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.frmHoaDon.resources
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.frmMenu.resources
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.frmNhaCungCap.resources
@@ -40,3 +39,4 @@ D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPh
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\RdlCompile.compiled
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\bin\Debug\QuanLyCuaHangPhuKienCauLong.exe.config
 D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.frmThongKeDoanhThu.resources
+D:\Đồ án NET test 17-9\Đồ án\QuanLyCuaHangPhuKienCauLong\QuanLyCuaHangPhuKienCauLong\obj\Debug\QuanLyCuaHangPhuKienCauLong.frmDangNhap.resources

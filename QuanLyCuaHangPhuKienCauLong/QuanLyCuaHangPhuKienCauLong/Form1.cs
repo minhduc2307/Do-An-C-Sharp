@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace QuanLyCuaHangPhuKienCauLong
 {
-    public partial class Form1 : Form
+    public partial class frmDangNhap : Form
     {
-        public Form1()
+        public frmDangNhap()
         {
             InitializeComponent();
         }

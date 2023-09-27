@@ -61,7 +61,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
-            this.btnHienThi = new System.Windows.Forms.Button();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
@@ -153,7 +153,6 @@
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(826, 292);
             this.Panel2.TabIndex = 10;
-            this.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
             // 
             // txtMatKhau
             // 
@@ -420,18 +419,18 @@
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
-            // btnHienThi
+            // btnLamMoi
             // 
-            this.btnHienThi.Image = ((System.Drawing.Image)(resources.GetObject("btnHienThi.Image")));
-            this.btnHienThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHienThi.Location = new System.Drawing.Point(550, 20);
-            this.btnHienThi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHienThi.Name = "btnHienThi";
-            this.btnHienThi.Size = new System.Drawing.Size(120, 30);
-            this.btnHienThi.TabIndex = 15;
-            this.btnHienThi.Text = "Làm mới ";
-            this.btnHienThi.UseVisualStyleBackColor = true;
-            this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);
+            this.btnLamMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.Image")));
+            this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLamMoi.Location = new System.Drawing.Point(550, 20);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(120, 30);
+            this.btnLamMoi.TabIndex = 15;
+            this.btnLamMoi.Text = "Làm mới ";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnHienThi_Click);
             // 
             // btnXoa
             // 
@@ -452,7 +451,7 @@
             this.panel3.Controls.Add(this.btnThem);
             this.panel3.Controls.Add(this.btnDong);
             this.panel3.Controls.Add(this.btnSua);
-            this.panel3.Controls.Add(this.btnHienThi);
+            this.panel3.Controls.Add(this.btnLamMoi);
             this.panel3.Controls.Add(this.btnXoa);
             this.panel3.Location = new System.Drawing.Point(2, 495);
             this.panel3.Name = "panel3";
@@ -504,7 +503,7 @@
         internal System.Windows.Forms.Button btnSua;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Button btnDong;
-        internal System.Windows.Forms.Button btnHienThi;
+        internal System.Windows.Forms.Button btnLamMoi;
         internal System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.ComboBox cmbGioiTinh;

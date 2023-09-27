@@ -72,74 +72,90 @@ namespace QuanLyCuaHangPhuKienCauLong
         SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-3RA1R40U\SQLEXPRESS;Initial Catalog=DoAn_C#;Integrated Security=True");
         private void loaDataGridView()
         {
+            try
+            {
+                string query = "select chitietPN.MaPN,MaNCC,MaNV,maSP,GiaNhap,SoLuong,NgayNhap,ThanhTien from phieunhap,chitietPN where chitietPN.MaPN=phieunhap.MaPN";
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
 
-            string query = "select chitietPN.MaPN,MaNCC,MaNV,maSP,GiaNhap,SoLuong,NgayNhap,ThanhTien from phieunhap,chitietPN where chitietPN.MaPN=phieunhap.MaPN";
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
-
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
-            dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
-            dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
-            dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-            dataGridView1.Columns[4].HeaderText = "Giá nhập";
-            dataGridView1.Columns[5].HeaderText = "Số lượng";
-            dataGridView1.Columns[6].HeaderText = "Ngày nhập";
-            dataGridView1.Columns[7].HeaderText = "Thành tiền";
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            conn.Close();
+                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
+                dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
+                dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
+                dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+                dataGridView1.Columns[4].HeaderText = "Giá nhập";
+                dataGridView1.Columns[5].HeaderText = "Số lượng";
+                dataGridView1.Columns[6].HeaderText = "Ngày nhập";
+                dataGridView1.Columns[7].HeaderText = "Thành tiền";
+                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
         private void fill_combobox()
         {
-            cmbMaSP.Items.Clear();
-            string query = "select MaSP from SanPham";
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                cmbMaSP.Items.Add(reader["MaSP"].ToString());
+                cmbMaSP.Items.Clear();
+                string query = "select MaSP from SanPham";
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cmbMaSP.Items.Add(reader["MaSP"].ToString());
+                }
+                conn.Close();
+                cmbNCC.Items.Clear();
+                string query1 = "select MaNCC from NhaCungCap";
+                conn.Open();
+                SqlCommand cmd1 = new SqlCommand(query1, conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    cmbNCC.Items.Add(reader1["MaNCC"].ToString());
+                }
+                conn.Close();
+
+                cmbMaPhieuNhap.Items.Clear();
+                string query2 = "select distinct MaPN from ChiTietPN";
+                conn.Open();
+                SqlCommand cmd2 = new SqlCommand(query2, conn);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    cmbMaPhieuNhap.Items.Add(reader2["MaPN"].ToString());
+                }
+                conn.Close();
             }
-            conn.Close();
-            cmbNCC.Items.Clear();
-            string query1 = "select MaNCC from NhaCungCap";
-            conn.Open();
-            SqlCommand cmd1 = new SqlCommand(query1, conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            catch (Exception ex)
             {
-                cmbNCC.Items.Add(reader1["MaNCC"].ToString());
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
-            conn.Close();
-            cmbMaPhieuNhap.Items.Clear();
-            string query2 = "select MaPN from PhieuNhap";
-            conn.Open();
-            SqlCommand cmd2 = new SqlCommand(query2, conn);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
-            {
-                cmbMaPhieuNhap.Items.Add(reader2["MaPN"].ToString());
-            }
-            conn.Close();
         }
         private void loadsauluu()
         {
-            string query = string.Format("select MaSP,GiaNhap,SoLuong,NgayNhap,thanhtien from ChiTietPN where MaPN='{0}' ", txtMaPhieuNhap.Text);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
-            conn.Close();
-
             try
             {
+                conn.Open();
+                string query = string.Format("select ChiTietPN.MaSP, TenSP, GiaNhap, ChiTietPN.SoLuong, NgayNhap, thanhtien from ChiTietPN  inner join SanPham on ChiTietPN.MaSP = SanPham.MaSP where MaPN='{0}' ", txtMaPhieuNhap.Text);
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns[1].HeaderText = "Tên sản phẩm";
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                conn.Close();
+
                 conn.Open();
                 string query2 = string.Format("select TongTien from PhieuNhap where MaPN='{0}'", txtMaPhieuNhap.Text);
                 SqlCommand cmd = new SqlCommand(query2, conn);
@@ -149,7 +165,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi " + ex);
+                MessageBox.Show("Lỗi:  " + ex.Message);
             }
         }
         private void frmPhieuNhap_Load(object sender, EventArgs e)
@@ -184,13 +200,20 @@ namespace QuanLyCuaHangPhuKienCauLong
                 txtMaPhieuNhap.Text = MaPN;
                 btnThemPhieuNhap.Enabled = false;
                 btnLuu.Enabled = true;
-                conn.Open();
-                string query = string.Format("insert into PhieuNhap(MaPN,MaNCC,MaNV) values ('{0}','{1}','{2}')",
-                      txtMaPhieuNhap.Text, cmbNCC.Text, txtMaNhanVien.Text);
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                fill_combobox();
+                try
+                {
+                    conn.Open();
+                    string query = string.Format("insert into PhieuNhap(MaPN,MaNCC,MaNV) values ('{0}','{1}','{2}')",
+                          txtMaPhieuNhap.Text, cmbNCC.Text, txtMaNhanVien.Text);
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    fill_combobox();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
             }
             else
             {
@@ -243,7 +266,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -306,7 +329,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                     loadsauluu();
                 }
             }
-            if (a == 5)
+            if (a == 6)
             {
                 if (e.RowIndex >= 0)
                 {
@@ -314,7 +337,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                     txtGiaNhap.Text = row.Cells["GiaNhap"].Value.ToString();
                     txtThanhTien.Text = row.Cells["ThanhTien"].Value.ToString();
                     cmbMaSP.Text = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
-                    upDowSL.Text = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+                    upDowSL.Text = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
                     btnThemPhieuNhap.Enabled = false;
                     btnSuaPhieuNhap.Enabled = true;
                     btnXoaMH.Enabled = true;
@@ -336,12 +359,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             upDowSL.Value = 0;
             cmbNCC.Text = "";
             cmbMaPhieuNhap.Text = "";
-        }
-        private void btnLamMoi_Click(object sender, EventArgs e)
-        {
-            lammoi();
-            dataGridView1.Columns.Clear();
-            loaDataGridView();
+
             btnThemPhieuNhap.Enabled = true;
             btnSuaPhieuNhap.Enabled = false;
             btnXoaMH.Enabled = false;
@@ -349,6 +367,13 @@ namespace QuanLyCuaHangPhuKienCauLong
             btnXoaPhieuNhap.Enabled = false;
             cmbNCC.Enabled = true;
             cmbMaSP.Enabled = true;
+            fill_combobox();
+        }
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            lammoi();
+            dataGridView1.Columns.Clear();
+            loaDataGridView();
         }
 
         private void btnInPhieuNhap_Click(object sender, EventArgs e)
@@ -387,13 +412,19 @@ namespace QuanLyCuaHangPhuKienCauLong
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C2:E2"].Value = "Phiếu nhập";
             // Biểu diễn thông tin chung của phiếu nhập
-                conn.Open();
-                string query = string.Format("SELECT ChiTietPN.MaPN, NgayNhap, TenNV, TenNCC, TongTien FROM ChiTietPN INNER JOIN PhieuNhap ON ChiTietPN.MaPN = PhieuNhap.MaPN INNER JOIN NhanVien ON PhieuNhap.MaNV = NhanVien.MaNV  INNER JOIN NhaCungCap on PhieuNhap.MaNCC = NhaCungCap.MaNCC WHERE ChiTietPN.MaPN = '{0}'", txtMaPhieuNhap.Text);
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                tblThongtinPN = ds.Tables[0];
-                conn.Close();
+            KetNoi kn = new KetNoi();
+            //conn.Open();
+            //string query = string.Format("SELECT ChiTietPN.MaPN, NgayNhap, TenNV, TenNCC, TongTien FROM ChiTietPN INNER JOIN PhieuNhap ON ChiTietPN.MaPN = PhieuNhap.MaPN INNER JOIN NhanVien ON PhieuNhap.MaNV = NhanVien.MaNV  INNER JOIN NhaCungCap on PhieuNhap.MaNCC = NhaCungCap.MaNCC WHERE ChiTietPN.MaPN = '{0}'", txtMaPhieuNhap.Text);
+            //SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds);
+
+            string query = string.Format("SELECT ChiTietPN.MaPN, NgayNhap, TenNV, TenNCC, TongTien FROM ChiTietPN INNER JOIN PhieuNhap ON ChiTietPN.MaPN = PhieuNhap.MaPN INNER JOIN NhanVien ON PhieuNhap.MaNV = NhanVien.MaNV  INNER JOIN NhaCungCap on PhieuNhap.MaNCC = NhaCungCap.MaNCC WHERE ChiTietPN.MaPN = '{0}'", txtMaPhieuNhap.Text);
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            DataSet ds = new DataSet();
+            ds = kn.LayDuLieu(query);
+            tblThongtinPN = ds.Tables[0];
+
             exRange.Range["B6:C9"].Font.Size = 12;
             exRange.Range["B6:B6"].Value = "Mã phiếu nhập:";
             exRange.Range["C6:E6"].MergeCells = true;
@@ -405,11 +436,14 @@ namespace QuanLyCuaHangPhuKienCauLong
             exRange.Range["C8:E8"].MergeCells = true;
             exRange.Range["C8:E8"].Value = tblThongtinPN.Rows[0][3].ToString();
             //Lấy thông tin các mặt hàng
-            conn.Open();
+            //conn.Open();
+            //string query2 = string.Format("select TenSP, GiaBan, ChiTietPN.SoLuong, ThanhTien from ChiTietPN inner join SanPham on ChiTietPN.MaSP = SanPham.MaSP where MaPN = '{0}'", txtMaPhieuNhap.Text);
+            //SqlDataAdapter da2 = new SqlDataAdapter(query2, conn);
+            //DataSet ds2 = new DataSet();
+            //da2.Fill(ds2);
             string query2 = string.Format("select TenSP, GiaBan, ChiTietPN.SoLuong, ThanhTien from ChiTietPN inner join SanPham on ChiTietPN.MaSP = SanPham.MaSP where MaPN = '{0}'", txtMaPhieuNhap.Text);
-            SqlDataAdapter da2 = new SqlDataAdapter(query2, conn);
             DataSet ds2 = new DataSet();
-            da2.Fill(ds2);
+            ds2 = kn.LayDuLieu(query2);
             tblThongtinSP = ds2.Tables[0];
             conn.Close();
             //Tạo dòng tiêu đề bảng
@@ -491,7 +525,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -517,14 +551,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                     if (rowsAffected > 0 && rowsAffected2 > 0)
                     {
                         MessageBox.Show("Xóa phiếu nhập thành công");
-                        btnXoaPhieuNhap.Enabled = false;
-                        btnThemPhieuNhap.Enabled = true;
-                        btnLuu.Enabled = false;
-                        dataGridView1.Columns.Clear();
-                        loaDataGridView();
-                        lammoi();
-                        fill_combobox();
-                        cmbNCC.Enabled = true;
+                        btnLamMoi.PerformClick();
                     }
                     else
                     {
@@ -534,20 +561,44 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             } 
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            string query = string.Format("select chitietPN.MaPN,MaNCC,MaNV,maSP,GiaNhap,SoLuong,NgayNhap,ThanhTien from phieunhap,chitietPN where chitietPN.MaPN=phieunhap.MaPN and ChiTietPN.MaPN like'%{0}%'", cmbMaPhieuNhap.Text);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dataGridView1.DataSource = ds.Tables[0];
-            conn.Close();
+            try
+            {
+                dataGridView1.Columns.Clear();
+                string query = string.Format("select chitietPN.MaPN,MaNCC,MaNV,maSP,GiaNhap,SoLuong,NgayNhap,ThanhTien from phieunhap,chitietPN where chitietPN.MaPN=phieunhap.MaPN and ChiTietPN.MaPN like'%{0}%'", cmbMaPhieuNhap.Text);
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+                txtMaPhieuNhap.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                dtpNgayNhap.Text = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
+
+                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
+                dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
+                dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
+                dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+                dataGridView1.Columns[4].HeaderText = "Giá nhập";
+                dataGridView1.Columns[5].HeaderText = "Số lượng";
+                dataGridView1.Columns[6].HeaderText = "Ngày nhập";
+                dataGridView1.Columns[7].HeaderText = "Thành tiền";
+                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            
         }
     }
 }

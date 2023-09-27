@@ -17,53 +17,64 @@ namespace QuanLyCuaHangPhuKienCauLong
             InitializeComponent();
         }
         
-        private void Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-3RA1R40U\SQLEXPRESS;Initial Catalog=DoAn_C#;Integrated Security=True");
         private void loaDataGridView()
         {
-           
-            string query = "select nhanvien.manv ,tennv , goitinh, ngaysinh, diachi, email, sdt, maquyen from nhanvien, TaiKhoan where taikhoan.manv=nhanvien.manv";
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dgvNhanVien.DataSource = ds.Tables[0];
+            try
+            {
+                string query = "select nhanvien.manv ,tennv , goitinh, ngaysinh, diachi, email, sdt, maquyen from nhanvien, TaiKhoan where taikhoan.manv=nhanvien.manv";
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dgvNhanVien.DataSource = ds.Tables[0];
 
-            dgvNhanVien.Columns[0].HeaderText = "Mã nhân viên";
-            dgvNhanVien.Columns[1].HeaderText = "Tên nhân viên";
-            dgvNhanVien.Columns[2].HeaderText = "Giới tính";
-            dgvNhanVien.Columns[3].HeaderText = "Ngày sinh";
-            dgvNhanVien.Columns[4].HeaderText = "Địa chỉ";
-            dgvNhanVien.Columns[5].HeaderText = "Email";
-            dgvNhanVien.Columns[6].HeaderText = "Số điện thoại";
-            dgvNhanVien.Columns[7].HeaderText = "Mã quyền";
-            conn.Close();
+                dgvNhanVien.Columns[0].HeaderText = "Mã nhân viên";
+                dgvNhanVien.Columns[1].HeaderText = "Tên nhân viên";
+                dgvNhanVien.Columns[2].HeaderText = "Giới tính";
+                dgvNhanVien.Columns[3].HeaderText = "Ngày sinh";
+                dgvNhanVien.Columns[4].HeaderText = "Địa chỉ";
+                dgvNhanVien.Columns[5].HeaderText = "Email";
+                dgvNhanVien.Columns[6].HeaderText = "Số điện thoại";
+                dgvNhanVien.Columns[7].HeaderText = "Mã quyền";
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
+
         private void fill_combobox()
         {
-            cmbQuyen.Items.Clear();
-            string query = "select MaQuyen from Quyen";
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                cmbQuyen.Items.Add(reader["MaQuyen"].ToString());
+                cmbQuyen.Items.Clear();
+                string query = "select MaQuyen from Quyen";
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cmbQuyen.Items.Add(reader["MaQuyen"].ToString());
+                }
+                conn.Close();
+
+                cmbTenNV.Items.Clear();
+                string query1 = "select TenNV from NhanVien";
+                conn.Open();
+                SqlCommand cmd1 = new SqlCommand(query1, conn);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    cmbTenNV.Items.Add(reader1["TenNV"].ToString());
+                }
+                conn.Close();
             }
-            conn.Close();
-            cmbTenNV.Items.Clear();
-            string query1 = "select TenNV from NhanVien";
-            conn.Open();
-            SqlCommand cmd1 = new SqlCommand(query1, conn);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+            catch (Exception ex)
             {
-                cmbTenNV.Items.Add(reader1["TenNV"].ToString());
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
-            conn.Close();
         
         }
 
@@ -142,6 +153,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             btnThem.Enabled = false;
             btnLuu.Enabled = true;
         }
+
         private void lammoi()
         {
             txtMaNhanVien.Text = "";
@@ -203,14 +215,13 @@ namespace QuanLyCuaHangPhuKienCauLong
                 if (rowsAffected > 0 && rowsAffected2> 0)
                 {
                     MessageBox.Show("Sửa thành công");
-                    loaDataGridView();
-                    lammoi();
+                    btnLamMoi.PerformClick();
                 }
                 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -234,15 +245,13 @@ namespace QuanLyCuaHangPhuKienCauLong
                     if (rowsAffected > 0 && rowsAffected2 > 0)
                     {
                         MessageBox.Show("Xóa thành công");
-                        lammoi();
-                        loaDataGridView();
-                        fill_combobox();
+                        btnLamMoi.PerformClick();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -265,19 +274,17 @@ namespace QuanLyCuaHangPhuKienCauLong
                     if (rowsAffected > 0 && rowsAffected2 > 0)
                     {
                         MessageBox.Show("Lưu thành công");
-                        lammoi();
-                        loaDataGridView();
-                        fill_combobox();
+                        btnLamMoi.PerformClick();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Không được bỏ trống tài khoản, mật khẩu,mã quyền !!!!");
+                    MessageBox.Show("Không được bỏ trống tài khoản, mật khẩu, mã quyền !!!!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -308,7 +315,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch(Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
     }

@@ -180,5 +180,10 @@ namespace QuanLyCuaHangPhuKienCauLong
         {
             this.Close();
         }
+
+        private void dgvThongKe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

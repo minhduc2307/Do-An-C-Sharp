@@ -69,6 +69,11 @@ namespace QuanLyCuaHangPhuKienCauLong
             txtEmail.Text = "";
             txtSoDienThoai.Text = "";
             cmbTimKiem.Text = "";
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnLuu.Enabled = false;
+            btnThem.Enabled = true;
+            fill_combobox();
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -92,53 +97,73 @@ namespace QuanLyCuaHangPhuKienCauLong
         }
         private void loaDataGridView()
         {
+            try
+            {
+                string query = "select * from NhaCungCap ";
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dgvNhaCungCap.DataSource = ds.Tables[0];
 
-            string query = "select * from NhaCungCap ";
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dgvNhaCungCap.DataSource = ds.Tables[0];
-
-            dgvNhaCungCap.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvNhaCungCap.Columns[0].HeaderText = "Mã nhà cung cấp";
-            dgvNhaCungCap.Columns[1].HeaderText = "Tên nhà cung cấp";
-            dgvNhaCungCap.Columns[2].HeaderText = "Địa chỉ";
-            dgvNhaCungCap.Columns[3].HeaderText = "Email";
-            dgvNhaCungCap.Columns[4].HeaderText = "Số điện thoại";
-            conn.Close();
+                dgvNhaCungCap.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvNhaCungCap.Columns[0].HeaderText = "Mã nhà cung cấp";
+                dgvNhaCungCap.Columns[1].HeaderText = "Tên nhà cung cấp";
+                dgvNhaCungCap.Columns[2].HeaderText = "Địa chỉ";
+                dgvNhaCungCap.Columns[3].HeaderText = "Email";
+                dgvNhaCungCap.Columns[4].HeaderText = "Số điện thoại";
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            
         }
         private void fill_combobox()
         {
-            cmbTimKiem.Items.Clear();
-            string query = "select TenNCC from NhaCungCap";
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                cmbTimKiem.Items.Add(reader["TenNCC"].ToString());
+                cmbTimKiem.Items.Clear();
+                string query = "select TenNCC from NhaCungCap";
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cmbTimKiem.Items.Add(reader["TenNCC"].ToString());
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi:" + ex.Message);
+            }
+            
         }
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
             loaDataGridView();
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            btnLuu.Enabled = false;
-            fill_combobox();
+            lammoi();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string query = string.Format("select * from NhaCungCap where TenNCC like N'%{0}%' ",cmbTimKiem.Text);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dgvNhaCungCap.DataSource = ds.Tables[0];
-            conn.Close();
+            try
+            {
+                string query = string.Format("select * from NhaCungCap where TenNCC like N'%{0}%' ", cmbTimKiem.Text);
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dgvNhaCungCap.DataSource = ds.Tables[0];
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -154,11 +179,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                 if (r > 0)
                 {
                     MessageBox.Show("Lưu thành công");
-                    lammoi();
-                    loaDataGridView();
-                    btnLuu.Enabled = false;
-                    btnThem.Enabled = true;
-                    fill_combobox();
+                    btnLammoi.PerformClick();
                 }
                 else
                 {
@@ -168,7 +189,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi "+ex);
+                MessageBox.Show("Lỗi " +ex.Message);
             }
         }
 
@@ -192,10 +213,6 @@ namespace QuanLyCuaHangPhuKienCauLong
         {
             lammoi();
             loaDataGridView();
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            btnLuu.Enabled = false;
-            btnThem.Enabled = true;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -205,27 +222,20 @@ namespace QuanLyCuaHangPhuKienCauLong
                 if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     conn.Open();
-                    string query = string.Format("delete from NhaCungCap where MaNCC='{0}'",
-                       txtMaNhaCungCap.Text);
+                    string query = string.Format("delete from NhaCungCap where MaNCC='{0}'", txtMaNhaCungCap.Text);
                     SqlCommand cmd = new SqlCommand(query, conn);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     conn.Close();
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Xóa thành công");
-                        lammoi();
-                        loaDataGridView();
-                        btnSua.Enabled = false;
-                        btnXoa.Enabled = false;
-                        btnLuu.Enabled = false;
-                        btnThem.Enabled = true;
-                        fill_combobox();
+                        btnLammoi.PerformClick();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("loi: " + ex);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -247,17 +257,12 @@ namespace QuanLyCuaHangPhuKienCauLong
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("Sửa thành công");
-                    lammoi();
-                    loaDataGridView();
-                    btnSua.Enabled = false;
-                    btnXoa.Enabled = false;
-                    btnLuu.Enabled = false;
-                    btnThem.Enabled = true;
+                    btnLammoi.PerformClick();
                 }
             }
             catch (Exception ex)
             {
-                Console.Write("Loi: " + ex.Message);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
     }
