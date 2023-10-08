@@ -301,7 +301,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -316,7 +318,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -332,7 +333,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>MaSP</rd:DefaultName>
@@ -362,7 +365,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>TenSP</rd:DefaultName>
@@ -392,7 +397,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>XuatXu</rd:DefaultName>
@@ -422,7 +429,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>MoTa</rd:DefaultName>
@@ -452,7 +461,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>GiaBan</rd:DefaultName>
@@ -482,7 +493,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>SoLuong</rd:DefaultName>
@@ -525,7 +538,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.855in</Top>
+        <Top>1.00083in</Top>
+        <Left>1.3925in</Left>
         <Height>0.5in</Height>
         <Width>7in</Width>
         <Style>
@@ -545,6 +559,7 @@
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -561,10 +576,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>0.17167in</Top>
-        <Left>3.68in</Left>
+        <Top>0.3175in</Top>
+        <Left>3.7925in</Left>
         <Height>0.25in</Height>
-        <Width>2.65833in</Width>
+        <Width>2.83541in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -580,10 +595,10 @@
     <Height>7.91633cm</Height>
     <Style />
   </Body>
-  <Width>19.28282cm</Width>
+  <Width>25.44761cm</Width>
   <Page>
     <PageHeader>
-      <Height>2.54cm</Height>
+      <Height>2.54001cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -591,8 +606,9 @@
           <Source>Embedded</Source>
           <Value>vnblogo</Value>
           <Sizing>FitProportional</Sizing>
+          <Top>0in</Top>
           <Height>0.95833in</Height>
-          <Width>0.98333in</Width>
+          <Width>1.06666in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -609,7 +625,7 @@
                   <Value>Shop phụ kiện cầu lông VNB</Value>
                   <Style>
                     <FontFamily>Times New Roman</FontFamily>
-                    <FontSize>18pt</FontSize>
+                    <FontSize>20pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -620,7 +636,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Left>3.68in</Left>
+          <Left>4.20083in</Left>
           <Height>0.93056in</Height>
           <Width>2.05833in</Width>
           <ZIndex>1</ZIndex>

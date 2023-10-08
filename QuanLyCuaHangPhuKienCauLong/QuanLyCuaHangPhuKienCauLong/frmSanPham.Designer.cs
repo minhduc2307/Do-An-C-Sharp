@@ -105,6 +105,7 @@
             // 
             // Panel2
             // 
+            this.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Panel2.Controls.Add(this.updowSL);
             this.Panel2.Controls.Add(this.btnMoAnh);
             this.Panel2.Controls.Add(this.pbAnhSanPham);
@@ -419,7 +420,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 241);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(935, 125);
-            this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // frmSanPham

@@ -159,8 +159,22 @@ namespace QuanLyCuaHangPhuKienCauLong
                 conn.Open();
                 string query2 = string.Format("select TongTien from PhieuNhap where MaPN='{0}'", txtMaPhieuNhap.Text);
                 SqlCommand cmd = new SqlCommand(query2, conn);
-                string TongTien = cmd.ExecuteScalar().ToString();
-                txtTongTien.Text = TongTien;
+                //string TongTien = cmd.ExecuteScalar().ToString();
+                //txtTongTien.Text = TongTien;
+
+                object result = cmd.ExecuteScalar().ToString();
+                string TongTien = result.ToString();
+                double tongTien;
+                if (double.TryParse(TongTien, out tongTien))
+                {
+                    txtTongTien.Text = TongTien;
+                    lblTongTien.Text = "Bằng chữ: " + NumberToWordsConverter.ChuyenSoSangChuoi(tongTien);
+                }
+                else
+                {
+                    txtTongTien.Text = "";
+                    lblTongTien.Text = "";
+                }
                 conn.Close();
             }
             catch (Exception ex)
@@ -367,6 +381,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             btnXoaPhieuNhap.Enabled = false;
             cmbNCC.Enabled = true;
             cmbMaSP.Enabled = true;
+            lblTongTien.Text = "Bằng chữ";
             fill_combobox();
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -413,82 +428,99 @@ namespace QuanLyCuaHangPhuKienCauLong
             exRange.Range["C2:E2"].Value = "Phiếu nhập";
             // Biểu diễn thông tin chung của phiếu nhập
             KetNoi kn = new KetNoi();
-            //conn.Open();
-            //string query = string.Format("SELECT ChiTietPN.MaPN, NgayNhap, TenNV, TenNCC, TongTien FROM ChiTietPN INNER JOIN PhieuNhap ON ChiTietPN.MaPN = PhieuNhap.MaPN INNER JOIN NhanVien ON PhieuNhap.MaNV = NhanVien.MaNV  INNER JOIN NhaCungCap on PhieuNhap.MaNCC = NhaCungCap.MaNCC WHERE ChiTietPN.MaPN = '{0}'", txtMaPhieuNhap.Text);
-            //SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            //DataSet ds = new DataSet();
-            //da.Fill(ds);
-
-            string query = string.Format("SELECT ChiTietPN.MaPN, NgayNhap, TenNV, TenNCC, TongTien FROM ChiTietPN INNER JOIN PhieuNhap ON ChiTietPN.MaPN = PhieuNhap.MaPN INNER JOIN NhanVien ON PhieuNhap.MaNV = NhanVien.MaNV  INNER JOIN NhaCungCap on PhieuNhap.MaNCC = NhaCungCap.MaNCC WHERE ChiTietPN.MaPN = '{0}'", txtMaPhieuNhap.Text);
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            DataSet ds = new DataSet();
-            ds = kn.LayDuLieu(query);
-            tblThongtinPN = ds.Tables[0];
-
-            exRange.Range["B6:C9"].Font.Size = 12;
-            exRange.Range["B6:B6"].Value = "Mã phiếu nhập:";
-            exRange.Range["C6:E6"].MergeCells = true;
-            exRange.Range["C6:E6"].Value = tblThongtinPN.Rows[0][0].ToString();
-            exRange.Range["B7:B7"].Value = "Ngày nhập:";
-            exRange.Range["C7:E7"].MergeCells = true;
-            exRange.Range["C7:E7"].Value = tblThongtinPN.Rows[0][1].ToString();
-            exRange.Range["B8:B8"].Value = "Tên nhà cung cấp:";
-            exRange.Range["C8:E8"].MergeCells = true;
-            exRange.Range["C8:E8"].Value = tblThongtinPN.Rows[0][3].ToString();
-            //Lấy thông tin các mặt hàng
-            //conn.Open();
-            //string query2 = string.Format("select TenSP, GiaBan, ChiTietPN.SoLuong, ThanhTien from ChiTietPN inner join SanPham on ChiTietPN.MaSP = SanPham.MaSP where MaPN = '{0}'", txtMaPhieuNhap.Text);
-            //SqlDataAdapter da2 = new SqlDataAdapter(query2, conn);
-            //DataSet ds2 = new DataSet();
-            //da2.Fill(ds2);
-            string query2 = string.Format("select TenSP, GiaBan, ChiTietPN.SoLuong, ThanhTien from ChiTietPN inner join SanPham on ChiTietPN.MaSP = SanPham.MaSP where MaPN = '{0}'", txtMaPhieuNhap.Text);
-            DataSet ds2 = new DataSet();
-            ds2 = kn.LayDuLieu(query2);
-            tblThongtinSP = ds2.Tables[0];
-            conn.Close();
-            //Tạo dòng tiêu đề bảng
-            exRange.Range["A11:F11"].Font.Bold = true;
-            exRange.Range["A11:F11"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["C11:F11"].ColumnWidth = 12;
-            exRange.Range["A11:A11"].Value = "STT";
-            exRange.Range["B11:B11"].Value = "Tên sản phẩm";
-            exRange.Range["C11:C11"].Value = "Giá bán";
-            exRange.Range["D11:D11"].Value = "Số lượng";
-            exRange.Range["E11:E11"].Value = "Thành tiền";
-            for (hang = 0; hang < tblThongtinSP.Rows.Count; hang++)
+            if (txtMaPhieuNhap.Text != "")
             {
-                //Điền số thứ tự vào cột 1 từ dòng 12
-                exSheet.Cells[1][hang + 12] = hang + 1;
-                for (cot = 0; cot < tblThongtinSP.Columns.Count; cot++)
-                //Điền thông tin hàng từ cột thứ 2, dòng 12
+                string query = string.Format("SELECT ChiTietPN.MaPN, NgayNhap, TenNV, TenNCC, TongTien FROM ChiTietPN INNER JOIN PhieuNhap ON ChiTietPN.MaPN = PhieuNhap.MaPN INNER JOIN NhanVien ON PhieuNhap.MaNV = NhanVien.MaNV  INNER JOIN NhaCungCap on PhieuNhap.MaNCC = NhaCungCap.MaNCC WHERE ChiTietPN.MaPN = '{0}'", txtMaPhieuNhap.Text);
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                ds = kn.LayDuLieu(query);
+                tblThongtinPN = ds.Tables[0];
+
+                exRange.Range["B6:C9"].Font.Size = 12;
+                exRange.Range["B6:B6"].Value = "Mã phiếu nhập:";
+                exRange.Range["B6:B6"].Font.Bold = true;
+                exRange.Range["C6:E6"].MergeCells = true;
+                exRange.Range["C6:E6"].Value = tblThongtinPN.Rows[0][0].ToString();
+                exRange.Range["C6:E6"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+                exRange.Range["B7:B7"].Value = "Ngày nhập:";
+                exRange.Range["B7:B7"].Font.Bold = true;
+                exRange.Range["C7:E7"].MergeCells = true;
+                exRange.Range["C7:E7"].Value = tblThongtinPN.Rows[0][1].ToString();
+                exRange.Range["C7:E7"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+                exRange.Range["B8:B8"].Value = "Tên nhà cung cấp:";
+                exRange.Range["B8:B8"].Font.Bold = true;
+                exRange.Range["C8:E8"].MergeCells = true;
+                exRange.Range["C8:E8"].Value = tblThongtinPN.Rows[0][3].ToString();
+                exRange.Range["C8:E8"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+                //Lấy thông tin các mặt hàng
+                string query2 = string.Format("select TenSP, GiaNhap, ChiTietPN.SoLuong, ThanhTien from ChiTietPN inner join SanPham on ChiTietPN.MaSP = SanPham.MaSP where MaPN = '{0}'", txtMaPhieuNhap.Text);
+                DataSet ds2 = new DataSet();
+                ds2 = kn.LayDuLieu(query2);
+                tblThongtinSP = ds2.Tables[0];
+                conn.Close();
+                //Tạo dòng tiêu đề bảng
+                exRange.Range["A11:F11"].Font.Bold = true;
+                exRange.Range["A11:F11"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+                exRange.Range["C11:F11"].ColumnWidth = 12;
+                exRange.Range["A11:A11"].Value = "STT";
+                exRange.Range["B11:B11"].Value = "Tên sản phẩm";
+                exRange.Range["C11:C11"].Value = "Giá nhập";
+                exRange.Range["D11:D11"].Value = "Số lượng";
+                exRange.Range["E11:E11"].Value = "Thành tiền";
+                for (hang = 0; hang < tblThongtinSP.Rows.Count; hang++)
                 {
-                    exSheet.Cells[cot + 2][hang + 12] = tblThongtinSP.Rows[hang][cot].ToString();
+                    //Điền số thứ tự vào cột 1 từ dòng 12
+                    exSheet.Cells[1][hang + 12] = hang + 1;
+                    for (cot = 0; cot < tblThongtinSP.Columns.Count; cot++)
+                    //Điền thông tin hàng từ cột thứ 2, dòng 12
+                    {
+                        exSheet.Cells[cot + 2][hang + 12] = tblThongtinSP.Rows[hang][cot].ToString();
+                    }
                 }
+                // Đẩy cột "Tổng tiền" sang phải 2 cột
+                exRange = exSheet.Cells[cot + 2][hang + 14];
+                exRange.Font.Bold = true;
+                exRange.Value2 = "Tổng tiền:";
+                // Đặt giá trị tổng tiền
+                exRange = exSheet.Cells[cot + 3][hang + 14];
+                exRange.Font.Bold = true;
+
+                string TongTien = (tblThongtinPN.Rows[0][4]).ToString();
+                exRange.Value2 = TongTien;
+                exRange.Value2 = TongTien;
+
+                double tongTien;
+                if (double.TryParse(TongTien, out tongTien))
+                {
+                    exRange = exSheet.Cells[4][hang + 15]; //Ô A1 
+
+                    exRange.Range["A1:F1"].MergeCells = true;
+                    exRange.Range["A1:F1"].Font.Bold = true;
+                    exRange.Range["A1:F1"].Font.Italic = true;
+                    exRange.Range["A1:F1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignRight;
+                    exRange.Range["A1:F1"].Value = "Bằng chữ: " + NumberToWordsConverter.ChuyenSoSangChuoi(tongTien);
+                }
+
+                // Đẩy cột "Nhân viên bán hàng" sang phải 2 cột
+                exRange = exSheet.Cells[cot + 2][hang + 17];
+                exRange.Range["A1:C1"].MergeCells = true;
+                exRange.Range["A1:C1"].Font.Bold = true;
+                exRange.Range["A1:C1"].Font.Italic = true;
+                exRange.Range["A1:C1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+                exRange.Range["A1:C1"].Value = "Nhân viên kho hàng";
+                exRange.Range["A6:C6"].MergeCells = true;
+                exRange.Range["A6:C6"].Font.Italic = true;
+                exRange.Range["A6:C6"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+                exRange.Range["A6:C6"].Value = tblThongtinPN.Rows[0][2];
+
+                exSheet.Name = "Phiếu nhập hàng";
+                exApp.Visible = true;
             }
-
-            // Đẩy cột "Tổng tiền" sang phải 2 cột
-            exRange = exSheet.Cells[cot + 2][hang + 14];
-            exRange.Font.Bold = true;
-            exRange.Value2 = "Tổng tiền:";
-            // Đặt giá trị tổng tiền
-            exRange = exSheet.Cells[cot + 3][hang + 14];
-            exRange.Font.Bold = true;
-            exRange.Value2 = tblThongtinPN.Rows[0][4].ToString();
-
-            // Đẩy cột "Nhân viên bán hàng" sang phải 2 cột
-            exRange = exSheet.Cells[cot + 2][hang + 16];
-            exRange.Range["A1:C1"].MergeCells = true;
-            exRange.Range["A1:C1"].Font.Bold = true;
-            exRange.Range["A1:C1"].Font.Italic = true;
-            exRange.Range["A1:C1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:C1"].Value = "Nhân viên kho hàng";
-            exRange.Range["A6:C6"].MergeCells = true;
-            exRange.Range["A6:C6"].Font.Italic = true;
-            exRange.Range["A6:C6"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A6:C6"].Value = tblThongtinPN.Rows[0][2];
-
-            exSheet.Name = "Phiếu nhập hàng";
-            exApp.Visible = true;
+            else
+            {
+                MessageBox.Show("Vui lòng chọn phiếu nhập cần in!");
+            }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -592,6 +624,26 @@ namespace QuanLyCuaHangPhuKienCauLong
                 dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                string query2 = string.Format("select TongTien from PhieuNhap where MaPN='{0}'", txtMaPhieuNhap.Text);
+                SqlCommand cmd = new SqlCommand(query2, conn);
+                //string TongTien = cmd.ExecuteScalar().ToString();
+                //txtTongTien.Text = TongTien;
+
+                object result = cmd.ExecuteScalar().ToString();
+                string TongTien = result.ToString();
+                double tongTien;
+                if (double.TryParse(TongTien, out tongTien))
+                {
+                    txtTongTien.Text = TongTien;
+                    lblTongTien.Text = "Bằng chữ: " + NumberToWordsConverter.ChuyenSoSangChuoi(tongTien);
+                }
+                else
+                {
+                    txtTongTien.Text = "";
+                    lblTongTien.Text = "";
+                }
+
                 conn.Close();
             }
             catch (Exception ex)

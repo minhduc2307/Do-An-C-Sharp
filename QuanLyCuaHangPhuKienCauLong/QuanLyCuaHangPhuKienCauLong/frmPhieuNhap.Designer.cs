@@ -34,6 +34,7 @@
             this.cmbMaPhieuNhap = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblTongTien = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Panel5 = new System.Windows.Forms.Panel();
@@ -124,6 +125,7 @@
             // 
             // GroupBox2
             // 
+            this.GroupBox2.Controls.Add(this.lblTongTien);
             this.GroupBox2.Controls.Add(this.panel6);
             this.GroupBox2.Controls.Add(this.Panel5);
             this.GroupBox2.Controls.Add(this.txtTongTien);
@@ -140,6 +142,16 @@
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Thông tin các mặt hàng";
             // 
+            // lblTongTien
+            // 
+            this.lblTongTien.AutoSize = true;
+            this.lblTongTien.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblTongTien.Location = new System.Drawing.Point(21, 269);
+            this.lblTongTien.Name = "lblTongTien";
+            this.lblTongTien.Size = new System.Drawing.Size(68, 17);
+            this.lblTongTien.TabIndex = 21;
+            this.lblTongTien.Text = "Bằng chữ";
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.dataGridView1);
@@ -154,7 +166,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(7, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(917, 133);
-            this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Panel5
@@ -198,7 +210,7 @@
             this.upDowSL.Location = new System.Drawing.Point(117, 50);
             this.upDowSL.Name = "upDowSL";
             this.upDowSL.Size = new System.Drawing.Size(43, 23);
-            this.upDowSL.TabIndex = 7;
+            this.upDowSL.TabIndex = 6;
             // 
             // cmbMaSP
             // 
@@ -214,7 +226,7 @@
             this.txtGiaNhap.Margin = new System.Windows.Forms.Padding(2);
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Size = new System.Drawing.Size(133, 23);
-            this.txtGiaNhap.TabIndex = 6;
+            this.txtGiaNhap.TabIndex = 7;
             // 
             // Label9
             // 
@@ -363,6 +375,7 @@
             // Label11
             // 
             this.Label11.AutoSize = true;
+            this.Label11.ForeColor = System.Drawing.Color.Red;
             this.Label11.Location = new System.Drawing.Point(629, 272);
             this.Label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label11.Name = "Label11";
@@ -407,7 +420,7 @@
             this.cmbNCC.Location = new System.Drawing.Point(126, 68);
             this.cmbNCC.Name = "cmbNCC";
             this.cmbNCC.Size = new System.Drawing.Size(199, 25);
-            this.cmbNCC.TabIndex = 3;
+            this.cmbNCC.TabIndex = 2;
             // 
             // dtpNgayNhap
             // 
@@ -435,7 +448,7 @@
             this.txtMaNhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(197, 23);
-            this.txtMaNhanVien.TabIndex = 2;
+            this.txtMaNhanVien.TabIndex = 3;
             // 
             // label5
             // 
@@ -478,6 +491,7 @@
             // 
             // Panel2
             // 
+            this.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Panel2.Controls.Add(this.GroupBox1);
             this.Panel2.Controls.Add(this.Label2);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -558,6 +572,7 @@
         private System.Windows.Forms.Button btnDong;
         internal System.Windows.Forms.TextBox txtThanhTien;
         internal System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTongTien;
 
     }
 }

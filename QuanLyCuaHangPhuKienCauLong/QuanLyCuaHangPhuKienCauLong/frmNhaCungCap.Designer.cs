@@ -93,7 +93,7 @@
             this.txtSoDienThoai.Multiline = true;
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(180, 27);
-            this.txtSoDienThoai.TabIndex = 5;
+            this.txtSoDienThoai.TabIndex = 3;
             // 
             // Label7
             // 
@@ -126,7 +126,7 @@
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(180, 26);
-            this.txtEmail.TabIndex = 4;
+            this.txtEmail.TabIndex = 5;
             // 
             // Label8
             // 
@@ -146,7 +146,7 @@
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(180, 27);
-            this.txtDiaChi.TabIndex = 2;
+            this.txtDiaChi.TabIndex = 4;
             // 
             // Label9
             // 
@@ -248,7 +248,7 @@
             this.txtTenNhaCungCap.Multiline = true;
             this.txtTenNhaCungCap.Name = "txtTenNhaCungCap";
             this.txtTenNhaCungCap.Size = new System.Drawing.Size(180, 27);
-            this.txtTenNhaCungCap.TabIndex = 3;
+            this.txtTenNhaCungCap.TabIndex = 2;
             // 
             // Label3
             // 
@@ -288,7 +288,7 @@
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.RowTemplate.Height = 24;
             this.dgvNhaCungCap.Size = new System.Drawing.Size(702, 153);
-            this.dgvNhaCungCap.TabIndex = 14;
+            this.dgvNhaCungCap.TabIndex = 20;
             this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
             // 
             // txtMaNhaCungCap
@@ -304,6 +304,7 @@
             // 
             // Panel2
             // 
+            this.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Panel2.Controls.Add(this.txtSoDienThoai);
             this.Panel2.Controls.Add(this.Label7);
             this.Panel2.Controls.Add(this.txtEmail);

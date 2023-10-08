@@ -75,11 +75,11 @@
             // 
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVien.Location = new System.Drawing.Point(11, 296);
-            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowTemplate.Height = 24;
             this.dgvNhanVien.Size = new System.Drawing.Size(810, 194);
-            this.dgvNhanVien.TabIndex = 19;
+            this.dgvNhanVien.TabIndex = 20;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
             // Label6
@@ -95,11 +95,11 @@
             // txttaiKhoan
             // 
             this.txttaiKhoan.Location = new System.Drawing.Point(609, 151);
-            this.txttaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.txttaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txttaiKhoan.Multiline = true;
             this.txttaiKhoan.Name = "txttaiKhoan";
             this.txttaiKhoan.Size = new System.Drawing.Size(180, 27);
-            this.txttaiKhoan.TabIndex = 6;
+            this.txttaiKhoan.TabIndex = 8;
             // 
             // Label7
             // 
@@ -116,7 +116,7 @@
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.Location = new System.Drawing.Point(82, 20);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(98, 30);
             this.btnThem.TabIndex = 11;
@@ -126,6 +126,7 @@
             // 
             // Panel2
             // 
+            this.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Panel2.Controls.Add(this.txtMatKhau);
             this.Panel2.Controls.Add(this.label12);
             this.Panel2.Controls.Add(this.txtSDT);
@@ -149,7 +150,7 @@
             this.Panel2.Controls.Add(this.Label1);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel2.Location = new System.Drawing.Point(0, 0);
-            this.Panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.Panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(826, 292);
             this.Panel2.TabIndex = 10;
@@ -157,12 +158,12 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(609, 193);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMatKhau.Multiline = true;
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(180, 27);
-            this.txtMatKhau.TabIndex = 8;
+            this.txtMatKhau.TabIndex = 9;
             // 
             // label12
             // 
@@ -177,11 +178,11 @@
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(609, 99);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSDT.Multiline = true;
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(180, 27);
-            this.txtSDT.TabIndex = 4;
+            this.txtSDT.TabIndex = 7;
             // 
             // label11
             // 
@@ -196,11 +197,11 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(609, 49);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(180, 27);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.TabIndex = 6;
             // 
             // label8
             // 
@@ -229,7 +230,7 @@
             this.cmbGioiTinh.Location = new System.Drawing.Point(169, 149);
             this.cmbGioiTinh.Name = "cmbGioiTinh";
             this.cmbGioiTinh.Size = new System.Drawing.Size(64, 21);
-            this.cmbGioiTinh.TabIndex = 5;
+            this.cmbGioiTinh.TabIndex = 3;
             // 
             // dtpNgaySinh
             // 
@@ -237,16 +238,16 @@
             this.dtpNgaySinh.Location = new System.Drawing.Point(170, 193);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(180, 20);
-            this.dtpNgaySinh.TabIndex = 7;
+            this.dtpNgaySinh.TabIndex = 4;
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(169, 234);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(180, 27);
-            this.txtDiaChi.TabIndex = 9;
+            this.txtDiaChi.TabIndex = 5;
             // 
             // Label9
             // 
@@ -281,11 +282,11 @@
             // txtTenNhanVien
             // 
             this.txtTenNhanVien.Location = new System.Drawing.Point(170, 99);
-            this.txtTenNhanVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTenNhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTenNhanVien.Multiline = true;
             this.txtTenNhanVien.Name = "txtTenNhanVien";
             this.txtTenNhanVien.Size = new System.Drawing.Size(180, 27);
-            this.txtTenNhanVien.TabIndex = 3;
+            this.txtTenNhanVien.TabIndex = 2;
             // 
             // Label3
             // 
@@ -301,7 +302,7 @@
             // 
             this.txtMaNhanVien.Enabled = false;
             this.txtMaNhanVien.Location = new System.Drawing.Point(170, 49);
-            this.txtMaNhanVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMaNhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMaNhanVien.Multiline = true;
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(180, 27);
@@ -332,7 +333,7 @@
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(199, 20);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(98, 30);
             this.btnSua.TabIndex = 12;
@@ -345,7 +346,7 @@
             this.Panel1.Controls.Add(this.panel4);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel1.Location = new System.Drawing.Point(0, 550);
-            this.Panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(826, 68);
             this.Panel1.TabIndex = 9;
@@ -357,7 +358,7 @@
             this.panel4.Controls.Add(this.label10);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(826, 68);
             this.panel4.TabIndex = 12;
@@ -375,7 +376,7 @@
             this.btnTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.Image")));
             this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTimKiem.Location = new System.Drawing.Point(435, 25);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(98, 30);
             this.btnTimKiem.TabIndex = 18;
@@ -398,7 +399,7 @@
             this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.Location = new System.Drawing.Point(433, 20);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(98, 30);
             this.btnLuu.TabIndex = 14;
@@ -411,7 +412,7 @@
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDong.Location = new System.Drawing.Point(689, 20);
-            this.btnDong.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(98, 30);
             this.btnDong.TabIndex = 16;
@@ -424,7 +425,7 @@
             this.btnLamMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.Image")));
             this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLamMoi.Location = new System.Drawing.Point(550, 20);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(120, 30);
             this.btnLamMoi.TabIndex = 15;
@@ -437,7 +438,7 @@
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.Location = new System.Drawing.Point(316, 20);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(98, 30);
             this.btnXoa.TabIndex = 13;
@@ -468,7 +469,7 @@
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmNhanVien";
             this.Text = "frmNhanVien";
             this.Load += new System.EventHandler(this.frmNhanVien_Load);
