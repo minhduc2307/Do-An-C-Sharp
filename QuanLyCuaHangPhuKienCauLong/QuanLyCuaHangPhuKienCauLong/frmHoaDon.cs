@@ -27,26 +27,30 @@ namespace QuanLyCuaHangPhuKienCauLong
         private void loaDataGridView()
         {
             
-            string query = "select HoaDon.MaHD,ngayban,manv,MaSP,GiaBan,SoLuong,GiamGia,ThanhTien from chitietHD,HoaDon where HoaDon.MaHD=ChiTietHD.MaHD ";
+            //string query = "select HoaDon.MaHD,ngayban,manv,MaSP,GiaBan,SoLuong,GiamGia,ThanhTien from chitietHD,HoaDon where HoaDon.MaHD=ChiTietHD.MaHD ";
+            string query = "select ChiTietHD.MaHD, NgayBan, MaNV from ChiTietHD inner join HoaDon on HoaDon.MaHD = ChiTietHD.MaHD";   
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[0].HeaderText = "Mã hóa đơn";
             dataGridView1.Columns[1].HeaderText = "Ngày bán";
             dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
-            dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-            dataGridView1.Columns[4].HeaderText = "Giá bán";
-            dataGridView1.Columns[5].HeaderText = "Số lượng";
-            dataGridView1.Columns[6].HeaderText = "Giảm giá";
-            dataGridView1.Columns[7].HeaderText = "Thành tiền";
-            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            //dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+            //dataGridView1.Columns[4].HeaderText = "Giá bán";
+            //dataGridView1.Columns[5].HeaderText = "Số lượng";
+            //dataGridView1.Columns[6].HeaderText = "Giảm giá";
+            //dataGridView1.Columns[7].HeaderText = "Thành tiền";
+            //dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             conn.Close();
         }
@@ -84,6 +88,16 @@ namespace QuanLyCuaHangPhuKienCauLong
                     txtTongTien.Text = "";
                     lblTongTien.Text = "";
                 }
+                dataGridView1.Columns[0].HeaderText = "Mã sản phẩm";
+                dataGridView1.Columns[2].HeaderText = "Giá bán";
+                dataGridView1.Columns[3].HeaderText = "Số lượng";
+                dataGridView1.Columns[4].HeaderText = "Giảm giá";
+                dataGridView1.Columns[5].HeaderText = "Thành tiền";
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 conn.Close();
             }
             catch (Exception ex)
@@ -239,6 +253,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                             cmbMaSP.Text = "";
                             upDowSoLuong.Value = 0;
                             upDowGiamGia.Value = 0;
+                            fill_combobox();
                         }
                         else
                         {
@@ -257,7 +272,7 @@ namespace QuanLyCuaHangPhuKienCauLong
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int a = dataGridView1.ColumnCount;
-            if (a == 8)
+            if (a == 3)
             {
                 if (e.RowIndex >= 0)
                 {
@@ -485,6 +500,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                     txtTongTien.Text = "";
                     lblTongTien.Text = "";
                 }
+                btnLuu.Enabled = true;
                 conn.Close();
             }
             catch (Exception ex)

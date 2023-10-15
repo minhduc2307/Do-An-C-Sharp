@@ -119,8 +119,8 @@ namespace QuanLyCuaHangPhuKienCauLong
         {
             if (rdbHoaDon.Checked)
             {
-                btnLamMoi.PerformClick();
-                string query = string.Format("select MaHD, NgayBan, TongTien from HoaDon where TongTien > 0 and NgayBan between '{0}' and '{1} '", dtpNgayBD.Value, dtpNgayKT.Value);
+                //btnLamMoi.PerformClick();
+                string query = string.Format("select MaHD, NgayBan, TongTien from HoaDon where TongTien > 0 and NgayBan between '{0}' and '{1} '", dtpNgayBD.Value.ToString("yyyy-MM-dd"), dtpNgayKT.Value.ToString("yyyy-MM-dd"));
                 DataSet ds = kn.LayDuLieu(query);
                 dgvThongKe.DataSource = ds.Tables[0];
                 dgvThongKe.Columns[0].HeaderText = "Mã hóa đơn";
@@ -132,7 +132,39 @@ namespace QuanLyCuaHangPhuKienCauLong
                 dgvThongKe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 
 
-                string query2 = string.Format("SELECT SUM(TongTien) FROM HoaDon WHERE NgayBan BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
+                string query2 = string.Format("SELECT SUM(TongTien) FROM HoaDon WHERE NgayBan BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value.ToString("yyyy-MM-dd"), dtpNgayKT.Value.ToString("yyyy-MM-dd"));
+                DataSet ds2 = kn.LayDuLieu(query2);
+                object tongTienObj = ds2.Tables[0].Rows[0][0];
+                string tongTienStr = tongTienObj.ToString();
+                double tongTien;
+                if (double.TryParse(tongTienStr, out tongTien))
+                {
+                    txtTong.Text = tongTienStr;
+                    lbBangChu1.Text = "Bằng chữ: " + ChuyenSoSangChuoi(tongTien);
+                    lbBangChu1.ForeColor = Color.DodgerBlue;
+                }
+                else
+                {
+                    txtTong.Text = "";
+                    lbBangChu1.Text = "";
+                }
+            }
+
+            else if (rdbPhieuNhap.Checked)
+            {
+                //btnLamMoi.PerformClick();
+                string query = string.Format("select PHieuNhap.MaPN, NgayNhap, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}' group by PhieuNhap.MaPN, NgayNhap, TongTien", dtpNgayBD.Value.ToString("yyyy-MM-dd"), dtpNgayKT.Value.ToString("yyyy-MM-dd"));
+                DataSet ds = kn.LayDuLieu(query);
+                dgvThongKe.DataSource = ds.Tables[0];
+                dgvThongKe.Columns[0].HeaderText = "Mã phiếu nhập";
+                dgvThongKe.Columns[1].HeaderText = "Ngày nhập";
+                dgvThongKe.Columns[2].HeaderText = "Tổng tiền";
+
+                dgvThongKe.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvThongKe.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvThongKe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                string query2 = string.Format("SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value.ToString("yyyy-MM-dd"), dtpNgayKT.Value.ToString("yyyy-MM-dd"));
                 DataSet ds2 = kn.LayDuLieu(query2);
                 object tongTienObj = ds2.Tables[0].Rows[0][0];
                 string tongTienStr = tongTienObj.ToString();
@@ -149,35 +181,9 @@ namespace QuanLyCuaHangPhuKienCauLong
                 }
             }
 
-            else if (rdbPhieuNhap.Checked)
+            else if (rdbHoaDon.Checked == false && rdbPhieuNhap.Checked == false)
             {
-                btnLamMoi.PerformClick();
-                string query = string.Format("select PHieuNhap.MaPN, NgayNhap, TongTien from PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}' group by PhieuNhap.MaPN, NgayNhap, TongTien", dtpNgayBD.Value, dtpNgayKT.Value);
-                DataSet ds = kn.LayDuLieu(query);
-                dgvThongKe.DataSource = ds.Tables[0];
-                dgvThongKe.Columns[0].HeaderText = "Mã phiếu nhập";
-                dgvThongKe.Columns[1].HeaderText = "Ngày nhập";
-                dgvThongKe.Columns[2].HeaderText = "Tổng tiền";
-
-                dgvThongKe.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvThongKe.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvThongKe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                string query2 = string.Format("SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value, dtpNgayKT.Value);
-                DataSet ds2 = kn.LayDuLieu(query2);
-                object tongTienObj = ds2.Tables[0].Rows[0][0];
-                string tongTienStr = tongTienObj.ToString();
-                double tongTien;
-                if (double.TryParse(tongTienStr, out tongTien))
-                {
-                    txtTong.Text = tongTienStr;
-                    lbBangChu1.Text = "Bằng chữ: " + ChuyenSoSangChuoi(tongTien);
-                }
-                else
-                {
-                    txtTong.Text = "";
-                    lbBangChu1.Text = "";
-                }
+                MessageBox.Show("Vui lòng chọn thống kê theo hóa đơn hoặc phiếu nhập!!!");
             }
         }
 

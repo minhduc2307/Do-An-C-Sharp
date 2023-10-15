@@ -191,6 +191,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.lbBangChu1);
             this.panel2.Controls.Add(this.txtTong);
             this.panel2.Controls.Add(this.lbDoanhThu);
@@ -223,7 +224,9 @@
             // lbDoanhThu
             // 
             this.lbDoanhThu.AutoSize = true;
+            this.lbDoanhThu.BackColor = System.Drawing.SystemColors.Control;
             this.lbDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDoanhThu.ForeColor = System.Drawing.Color.Red;
             this.lbDoanhThu.Location = new System.Drawing.Point(55, 24);
             this.lbDoanhThu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDoanhThu.Name = "lbDoanhThu";
