@@ -28,7 +28,8 @@ namespace QuanLyCuaHangPhuKienCauLong
         {
             
             //string query = "select HoaDon.MaHD,ngayban,manv,MaSP,GiaBan,SoLuong,GiamGia,ThanhTien from chitietHD,HoaDon where HoaDon.MaHD=ChiTietHD.MaHD ";
-            string query = "select ChiTietHD.MaHD, NgayBan, MaNV from ChiTietHD inner join HoaDon on HoaDon.MaHD = ChiTietHD.MaHD";   
+            //string query = "select ChiTietHD.MaHD, NgayBan, MaNV from ChiTietHD inner join HoaDon on HoaDon.MaHD = ChiTietHD.MaHD"; 
+            string query = "select * from HoaDon";
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataSet ds = new DataSet();
@@ -37,6 +38,7 @@ namespace QuanLyCuaHangPhuKienCauLong
             dataGridView1.Columns[0].HeaderText = "Mã hóa đơn";
             dataGridView1.Columns[1].HeaderText = "Ngày bán";
             dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
+            dataGridView1.Columns[3].HeaderText = "Tổng tiền";
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -272,7 +274,7 @@ namespace QuanLyCuaHangPhuKienCauLong
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int a = dataGridView1.ColumnCount;
-            if (a == 3)
+            if (a == 4)
             {
                 if (e.RowIndex >= 0)
                 {
@@ -462,7 +464,13 @@ namespace QuanLyCuaHangPhuKienCauLong
             try
             {
                 dataGridView1.Columns.Clear();
-                string query = string.Format("select HoaDon.MaHD,ngayban,manv,MaSP,GiaBan,SoLuong,GiamGia,ThanhTien from chitietHD,HoaDon where HoaDon.MaHD=ChiTietHD.MaHD and ChiTietHD.MaHD='{0}'", cmbMaHoaDon.Text);
+                //string query = string.Format("select HoaDon.MaHD,ngayban,manv,MaSP,GiaBan,SoLuong,GiamGia,ThanhTien from chitietHD,HoaDon where HoaDon.MaHD=ChiTietHD.MaHD and ChiTietHD.MaHD='{0}'", cmbMaHoaDon.Text);
+                //conn.Open();
+                //SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                //DataSet ds = new DataSet();
+                //da.Fill(ds);
+                //dataGridView1.DataSource = ds.Tables[0];
+                string query = string.Format("select * from HoaDon where MaHD = '{0}'", cmbMaHoaDon.Text);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
@@ -471,18 +479,28 @@ namespace QuanLyCuaHangPhuKienCauLong
                 txtMaHD.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 dtpNgayBan.Text = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
                 dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[0].HeaderText = "Mã hóa đơn";
                 dataGridView1.Columns[1].HeaderText = "Ngày bán";
                 dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
-                dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-                dataGridView1.Columns[4].HeaderText = "Giá bán";
-                dataGridView1.Columns[5].HeaderText = "Số lượng";
-                dataGridView1.Columns[6].HeaderText = "Giảm giá";
-                dataGridView1.Columns[7].HeaderText = "Thành tiền";
-                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dataGridView1.Columns[3].HeaderText = "Tổng tiền";
+                dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                //dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //dataGridView1.Columns[0].HeaderText = "Mã hóa đơn";
+                //dataGridView1.Columns[1].HeaderText = "Ngày bán";
+                //dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
+                //dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+                //dataGridView1.Columns[4].HeaderText = "Giá bán";
+                //dataGridView1.Columns[5].HeaderText = "Số lượng";
+                //dataGridView1.Columns[6].HeaderText = "Giảm giá";
+                //dataGridView1.Columns[7].HeaderText = "Thành tiền";
+                //dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                 string query2 = string.Format("select TongTien from HoaDon where MaHD='{0}'", txtMaHD.Text);
                 SqlCommand cmd = new SqlCommand(query2, conn);

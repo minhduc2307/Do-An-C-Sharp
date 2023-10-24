@@ -40,8 +40,10 @@
             this.thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel_cha = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_cha.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -133,13 +135,22 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FloralWhite;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 28);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1441, 651);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // panel_cha
+            // 
+            this.panel_cha.Controls.Add(this.pictureBox1);
+            this.panel_cha.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_cha.Location = new System.Drawing.Point(0, 28);
+            this.panel_cha.Name = "panel_cha";
+            this.panel_cha.Size = new System.Drawing.Size(1441, 651);
+            this.panel_cha.TabIndex = 4;
             // 
             // frmMenu
             // 
@@ -148,7 +159,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1441, 679);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel_cha);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -161,6 +172,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel_cha.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem thốngKêHàngTồnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêDoanhThuToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel_cha;
     }
 }

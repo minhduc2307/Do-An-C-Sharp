@@ -87,11 +87,12 @@ namespace QuanLyCuaHangPhuKienCauLong
                 dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
                 dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
                 dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
-               // dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-             //   dataGridView1.Columns[4].HeaderText = "Giá nhập";
-              //  dataGridView1.Columns[5].HeaderText = "Số lượng";
                 dataGridView1.Columns[3].HeaderText = "Ngày nhập";
-               // dataGridView1.Columns[7].HeaderText = "Thành tiền";
+
+                //dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+                //dataGridView1.Columns[4].HeaderText = "Giá nhập";
+                //dataGridView1.Columns[5].HeaderText = "Số lượng";
+                //dataGridView1.Columns[7].HeaderText = "Thành tiền";
                 //dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -614,28 +615,46 @@ namespace QuanLyCuaHangPhuKienCauLong
             try
             {
                 dataGridView1.Columns.Clear();
-                string query = string.Format("select chitietPN.MaPN,MaNCC,MaNV,maSP,GiaNhap,SoLuong,NgayNhap,ThanhTien from phieunhap,chitietPN where chitietPN.MaPN=phieunhap.MaPN and ChiTietPN.MaPN like'%{0}%'", cmbMaPhieuNhap.Text);
+                //string query = string.Format("select chitietPN.MaPN,MaNCC,MaNV,maSP,GiaNhap,SoLuong,NgayNhap,ThanhTien from phieunhap,chitietPN where chitietPN.MaPN=phieunhap.MaPN and ChiTietPN.MaPN like'%{0}%'", cmbMaPhieuNhap.Text);
+                //conn.Open();
+                //SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                //DataSet ds = new DataSet();
+                //da.Fill(ds);
+                //dataGridView1.DataSource = ds.Tables[0];
+                //txtMaPhieuNhap.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                //dtpNgayNhap.Text = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
+
+                string query = string.Format("select distinct (chitietPN.MaPN), MaNCC, MaNV, NgayNhap from phieunhap, chitietPN where chitietPN.MaPN = phieunhap.MaPN and chitietPN.MaPN = '{0}'", cmbMaPhieuNhap.Text);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
                 txtMaPhieuNhap.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
-                dtpNgayNhap.Text = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
-
                 dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
                 dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
                 dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
                 dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
-                dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-                dataGridView1.Columns[4].HeaderText = "Giá nhập";
-                dataGridView1.Columns[5].HeaderText = "Số lượng";
-                dataGridView1.Columns[6].HeaderText = "Ngày nhập";
-                dataGridView1.Columns[7].HeaderText = "Thành tiền";
-                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dataGridView1.Columns[3].HeaderText = "Ngày nhập";
+
+
+                //dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
+                //dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
+                //dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
+                //dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
+                //dataGridView1.Columns[4].HeaderText = "Giá nhập";
+                //dataGridView1.Columns[5].HeaderText = "Số lượng";
+                //dataGridView1.Columns[6].HeaderText = "Ngày nhập";
+                //dataGridView1.Columns[7].HeaderText = "Thành tiền";
+                //dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                 string query2 = string.Format("select TongTien from PhieuNhap where MaPN='{0}'", txtMaPhieuNhap.Text);
                 SqlCommand cmd = new SqlCommand(query2, conn);

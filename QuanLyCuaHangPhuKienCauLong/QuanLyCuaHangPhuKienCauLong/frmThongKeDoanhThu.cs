@@ -164,7 +164,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                 dgvThongKe.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvThongKe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                string query2 = string.Format("SELECT SUM(TongTien) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value.ToString("yyyy-MM-dd"), dtpNgayKT.Value.ToString("yyyy-MM-dd"));
+                string query2 = string.Format("select  sum (distinct (TongTien)) FROM PhieuNhap inner join ChiTietPN on PhieuNhap.MaPN = ChiTietPN.MaPN where NgayNhap BETWEEN '{0}' AND '{1}'", dtpNgayBD.Value.ToString("yyyy-MM-dd"), dtpNgayKT.Value.ToString("yyyy-MM-dd"));
                 DataSet ds2 = kn.LayDuLieu(query2);
                 object tongTienObj = ds2.Tables[0].Rows[0][0];
                 string tongTienStr = tongTienObj.ToString();
