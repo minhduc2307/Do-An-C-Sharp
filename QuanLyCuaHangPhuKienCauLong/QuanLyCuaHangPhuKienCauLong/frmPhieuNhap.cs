@@ -88,15 +88,6 @@ namespace QuanLyCuaHangPhuKienCauLong
                 dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
                 dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
                 dataGridView1.Columns[3].HeaderText = "Ngày nhập";
-
-                //dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-                //dataGridView1.Columns[4].HeaderText = "Giá nhập";
-                //dataGridView1.Columns[5].HeaderText = "Số lượng";
-                //dataGridView1.Columns[7].HeaderText = "Thành tiền";
-                //dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 conn.Close();
             }
             catch (Exception ex)
@@ -641,21 +632,6 @@ namespace QuanLyCuaHangPhuKienCauLong
                 dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
                 dataGridView1.Columns[3].HeaderText = "Ngày nhập";
 
-
-                //dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //dataGridView1.Columns[0].HeaderText = "Mã phiếu nhập";
-                //dataGridView1.Columns[1].HeaderText = "Mã nhà cung cấp";
-                //dataGridView1.Columns[2].HeaderText = "Mã nhân viên";
-                //dataGridView1.Columns[3].HeaderText = "Mã sản phẩm";
-                //dataGridView1.Columns[4].HeaderText = "Giá nhập";
-                //dataGridView1.Columns[5].HeaderText = "Số lượng";
-                //dataGridView1.Columns[6].HeaderText = "Ngày nhập";
-                //dataGridView1.Columns[7].HeaderText = "Thành tiền";
-                //dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
                 string query2 = string.Format("select TongTien from PhieuNhap where MaPN='{0}'", txtMaPhieuNhap.Text);
                 SqlCommand cmd = new SqlCommand(query2, conn);
                 //string TongTien = cmd.ExecuteScalar().ToString();
@@ -675,6 +651,7 @@ namespace QuanLyCuaHangPhuKienCauLong
                     lblTongTien.Text = "";
                 }
                 btnLuu.Enabled = true;
+                btnThemPhieuNhap.Enabled = false;
                 conn.Close();
             }
             catch (Exception ex)
